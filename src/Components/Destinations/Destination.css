@@ -1,0 +1,31 @@
+.destination{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.destination h1{
+    color: #171717;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.destination hr{
+    margin-top: -35px;
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+}
+
+.destination-list{
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 80px;
+    margin-bottom: 10px;
+}

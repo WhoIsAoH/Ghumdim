@@ -1,0 +1,33 @@
+.category-top{
+    height: 20vh;
+    background: linear-gradient(180deg, #fde1ff,#e1ffea22 60%);
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 100px;
+    gap: 100px;
+}
+
+.category-top img{
+    border-radius: 40% 40% 40% 40%;
+    height: 75px;
+    width: 125px;
+    margin-top: 50px;
+    object-fit: fill;
+    cursor: pointer;
+    /* filter: sepia(30%);   gives retro vive */
+}
+
+.category-top button{
+    border-radius: 40% 40% 40% 40%;
+    height: 75px;
+    width: 125px;
+    margin-top: 50px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.category-top p{
+    color: gray;
+    
+}
+
