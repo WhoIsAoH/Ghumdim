@@ -4,6 +4,21 @@ spring:
     url: jdbc:mysql://localhost:3306/ghumdim?createDatabaseIfNotExist=true
     username: root
     password: root
+
+
+  # email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ajay.paudel1@gmail.com
+    password: ruxh pkyv zxrq mpik
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true
+
   #JPA
   jpa:
     hibernate:

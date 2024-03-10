@@ -5,6 +5,7 @@ import com.aoh.ghumdim.security.auth.AuthenticationResponse;
 import com.aoh.ghumdim.security.auth.RegisterRequest;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
+import com.aoh.ghumdim.shared.MailService;
 import com.aoh.ghumdim.shared.MessageConstant;
 import com.aoh.ghumdim.shared.UserResponse;
 import com.aoh.ghumdim.shared.exception.UserAlreadyExistException;
@@ -26,6 +27,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final MailService mailService;
 
     public UserResponse register(RegisterRequest request) {
             Optional<User> optionalUser = repository.findByEmail(request.getEmail());
@@ -47,6 +49,8 @@ public class AuthenticationService {
                 var jwtToken = jwtService.generateToken(user);
                 AuthenticationResponse jwt = new AuthenticationResponse(jwtToken);
 //                return ResponseEntity.ok(jwtToken);
+        mailService.sendEmail(user.getEmail(), MessageConstant.ACCOUNT_CREATION_SUCCESSFUL, MessageConstant.ACCOUNT_CREATE_BODY);
+
                 return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
