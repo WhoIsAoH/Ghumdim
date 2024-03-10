@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './DestinationDisplay.css'
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from "../Assets/star_dull_icon.png"
+import { DestinationContext } from '../../Context/DestinationContext'
 
 const DestinationDisplay = (props) => {
 
     const { destination } = props;
+    const { addToCart } = useContext(DestinationContext);
+
     return (
         <div className='destinationdisplay'>
             <div className="destinationdisplay-left">
@@ -33,7 +36,7 @@ const DestinationDisplay = (props) => {
                 <div className='destinationdisplay-right-description'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nemo veniam mollitia, earum tempora quo. Pariatur reiciendis error natus. Officiis, vel.
                 </div>
-                <button>Add to Favourites</button>
+                <button onClick={() => { addToCart(destination.id) }}>Add to Favourites</button>
                 {/* <p className='destinationdisplay-right-category'><span>Category:</span></p> */}
             </div>
         </div>

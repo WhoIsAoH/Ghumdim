@@ -1,5 +1,4 @@
-
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home';
@@ -15,26 +14,26 @@ function App() {
 
       <BrowserRouter>
 
-      <Navbar/>
+        <Navbar />
 
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/religious' element={<Category  category="religious"/> }/>
-        <Route path='/parks' element={<Category  category="parks"/>}/>
-        <Route path='/hike' element={<Category  category="hike"/>}/>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/religious' element={<Category category="religious" />} />
+          <Route path='/parks' element={<Category category="parks" />} />
+          <Route path='/hike' element={<Category category="hike" />} />
 
-        <Route path="/destination" element={<Destination/>}>
-          <Route path=':destinationId/' element={<Destination/>}/>
-        </Route>
+          <Route path="/destination" element={<Destination />}>
+            <Route path=':destinationId/' element={<Destination />} />
+          </Route>
 
-        <Route path='/favourite' element={<Favourites/>}/>
-        <Route path='/login' element={<LoginSignup/>}/>
+          <Route path='/favourite' element={<Favourites />} />
+          <Route path='/login' element={<LoginSignup />} />
 
-      </Routes>
+        </Routes>
 
       </BrowserRouter>
 
-      <Footer/>
+      <Footer />
 
     </div>
   );
