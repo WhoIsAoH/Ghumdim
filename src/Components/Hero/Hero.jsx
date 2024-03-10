@@ -1,6 +1,5 @@
 import React from 'react'
 import './Hero.css'
-// import left_pic from '../Assets/hero-left-pic.png'
 import hero_right from '../Assets/hero_right.png'
 
 const Hero = () => {
@@ -8,7 +7,7 @@ const Hero = () => {
         <div className='hero'>
             <div className="hero-left">
                 {/* <h2>Your Travel Companion</h2> */}
-            <p>Travel, enjoy <br />and live a new<br /> and full life</p>
+            <p>Travel, enjoy <br />and live a new<br /> and full life.</p>
 
 
                 <div className='high-rated'></div>

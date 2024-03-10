@@ -19,18 +19,20 @@ const Navbar = () => {
 
       <ul className='nav-menu'>
         <li onClick={() => { setMenu("home") }}><Link style={{ textDecoration: 'none' }} to='/'>Home</Link> {menu === "home" ? <hr /> : <></>} </li>
-        <li onClick={() => { setMenu("category") }}> <Link style={{ textDecoration: 'none' }} to='/category'>Category</Link>{menu === "category" ? <hr /> : <></>} </li>
+        <li onClick={() => { setMenu("religious") }}> <Link style={{ textDecoration: 'none' }} to='/religious'>Religious Place</Link>{menu === "religious" ? <hr /> : <></>} </li>
+        <li onClick={() => { setMenu("parks") }}> <Link style={{ textDecoration: 'none' }} to='/parks'>Parks</Link>{menu === "parks" ? <hr /> : <></>} </li>
+        <li onClick={() => { setMenu("hike") }}> <Link style={{ textDecoration: 'none' }} to='/hike'>Hike</Link>{menu === "hike" ? <hr /> : <></>} </li>
       </ul>
 
 
       <div className='search-bar'>
         <input type="text" placeholder='Search' />
-        {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+        
       </div>
 
       <div className="nav-login-fav">
         <Link to='/login'><button>Login</button></Link>
-        {/* <i class="fa-regular fa-star"></i> */}
+
         <Link to='/favourites'><img src={fav_icon} alt="" /></Link>
         <div className='nav-fav-count'>0</div>
       </div>

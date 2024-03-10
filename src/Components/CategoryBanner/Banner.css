@@ -1,0 +1,27 @@
+.banner{
+    display: flex;
+    height: 20vh;
+    width: 100%;
+    background: linear-gradient(180deg, #fde1ff,#e1ffea22 60%);
+}
+
+.banner .banner-left{
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 180px;
+}
+
+
+.banner .banner-right{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* mix-blend-mode: color-burn; */
+}
+
+.banner .banner-right img{
+    height: 100px;
+}

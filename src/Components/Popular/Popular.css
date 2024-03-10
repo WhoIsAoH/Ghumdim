@@ -1,9 +1,10 @@
 .popular{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     gap: 10px;
-    height: 90vh;
+    margin-bottom: 30px;
 }
 
 .popular h1{
@@ -13,7 +14,7 @@
 }
 
 .popular hr{
-    margin-top: -35px;
+    
     width: 200px;
     height: 6px;
     border-radius: 10px;
@@ -21,11 +22,8 @@
 }
 
 .popular-destination{
-    height: 200px;
-    
     margin-top: 50px;
     display: flex;
+    justify-content: space-between;
     gap: 30px;
-    
-    object-fit: contain;
 }

@@ -1,7 +1,9 @@
 .hero{
-    /* height: 80vh; */
+    height: 80vh;
+    width: 100%;
     background: linear-gradient(180deg, #fde1ff,#e1ffea22 60%);
     display: flex;
+    
 }
 
 .hero-left{
@@ -14,26 +16,11 @@
     line-height: 1.1;
 }
 
-.hero-left h2{
-    color: #090909;
-    font-size: 26px;
-    font-weight: 600;
-}
 
 .hero-left p{
     color: #171717;
-    font-size: 100px ;
-    font-weight: 700;
-}
-
-.hero-left-picture{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.hero-left-picture img{
-    width: 105px;
+    font-size: 65px ;
+    font-weight: 600;
 }
 
 .hero-right{
@@ -42,4 +29,13 @@
     align-items: center;
     justify-content: center;
     mix-blend-mode: color-burn;
+}
+
+.hero-right img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
 }
