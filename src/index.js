@@ -6,11 +6,11 @@ import DestinationContextProvider from './Context/DestinationContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
-    <DestinationContextProvider>
-      <App/>
-    </DestinationContextProvider>
-  
+
+  <DestinationContextProvider>
+    <App />
+  </DestinationContextProvider>
+
 
   // <React.StrictMode>
   //   <App />

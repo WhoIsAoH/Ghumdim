@@ -1,0 +1,25 @@
+.destinationdisplay {
+    display: flex;
+    margin: 0px 170px;
+
+}
+
+.destinationdisplay-left {
+    display: flex;
+    gap: 17px;
+}
+
+.destinationdisplay-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.destinationdisplay-img-list img {
+    height: 141px;
+}
+
+/* .destinationdisplay-main-img {
+    width: 550px;
+    height: 620px;
+} */
