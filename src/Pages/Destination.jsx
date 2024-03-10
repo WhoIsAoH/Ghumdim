@@ -3,6 +3,7 @@ import { DestinationContext } from '../Context/DestinationContext'
 import { useParams } from 'react-router-dom';
 import Breadcrum from '../Components/Breadcrum/Breadcrum';
 import DestinationDisplay from '../Components/DestinationDisplay/DestinationDisplay';
+import DescriptionBox from '../Components/DescriptionBox/DescriptionBox';
 
 
 const Destination = () => {
@@ -14,6 +15,7 @@ const Destination = () => {
     < div >
       <Breadcrum destination={destination} />
       <DestinationDisplay destination={destination} />
+      <DescriptionBox />
     </div >
   )
 }

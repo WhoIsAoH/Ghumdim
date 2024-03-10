@@ -25,10 +25,10 @@ const Navbar = () => {
       </ul>
 
 
-      <div className='search-bar'>
+      {/* <div className='search-bar'>
         <input type="text" placeholder='Search' />
         
-      </div>
+      </div> */}
 
       <div className="nav-login-fav">
         <Link to='/login'><button>Login</button></Link>

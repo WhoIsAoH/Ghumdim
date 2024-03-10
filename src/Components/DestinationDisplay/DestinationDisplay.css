@@ -23,3 +23,44 @@
     width: 550px;
     height: 620px;
 } */
+
+.destinationdisplay-right {
+    margin: 0px 70px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.destinationdisplay-right h1 {
+    color: #3d3d3d;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.destinationdisplay-right-star {
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+    gap: 5px;
+    color: #1c1c1c;
+    font-size: 16px;
+}
+
+.destinationdisplay-right-description {
+    color: #1c1c1c;
+    padding: 2px;
+}
+
+.destinationdisplay-right button {
+    padding: 8px 16px;
+    width: 170px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+    color: white;
+    background: #FF4141;
+    margin-bottom: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
