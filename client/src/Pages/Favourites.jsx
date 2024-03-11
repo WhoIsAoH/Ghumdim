@@ -1,10 +1,10 @@
 import React from 'react'
-import FavItems from '../Components/FavouriteDestination/FavItems'
+import FavDestination from '../Components/FavDestination/FavDestination'
 
 const Favourites = () => {
   return (
     <div>
-      <FavItems />
+      <FavDestination />
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { DestinationContext } from '../../Context/DestinationContext'
 const DestinationDisplay = (props) => {
 
     const { destination } = props;
-    const { addToCart } = useContext(DestinationContext);
+    const { addToFavourite } = useContext(DestinationContext);
 
     return (
         <div className='destinationdisplay'>
@@ -36,7 +36,7 @@ const DestinationDisplay = (props) => {
                 <div className='destinationdisplay-right-description'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nemo veniam mollitia, earum tempora quo. Pariatur reiciendis error natus. Officiis, vel.
                 </div>
-                <button onClick={() => { addToCart(destination.id) }}>Add to Favourites</button>
+                <button onClick={() => { addToFavourite(destination.id) }}>Add to Favourites</button>
                 {/* <p className='destinationdisplay-right-category'><span>Category:</span></p> */}
             </div>
         </div>

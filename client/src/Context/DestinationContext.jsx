@@ -3,29 +3,29 @@ import all_destination from '../Components/Assets/alldestination';
 
 export const DestinationContext = createContext(null);
 
-const getDefaultCart = () => {
-    let cart = {};
+const getDefaultFavourite = () => {
+    let favourite = {};
     for (let index = 0; index < all_destination.length + 1; index++) {
-        cart[index] = 0;
+        favourite[index] = 0;
     }
-    return cart;
+    return favourite;
 }
 
 const DestinationContextProvider = (props) => {
 
-    const [cartItems, setCartItems] = useState(getDefaultCart());
+    const [favouriteItems, setFavouriteItems] = useState(getDefaultFavourite());
 
     // add to cart
-    const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
-        console.log(cartItems);
+    const addToFavourite = (itemId) => {
+        setFavouriteItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
+        console.log(favouriteItems);
     }
     // remove from cart
-    const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+    const removeFromFavourite = (itemId) => {
+        setFavouriteItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     }
 
-    const contextValue = { all_destination, cartItems, addToCart, removeFromCart };
+    const contextValue = { all_destination, favouriteItems, addToFavourite, removeFromFavourite };
 
     return (
         <DestinationContext.Provider value={contextValue}>
