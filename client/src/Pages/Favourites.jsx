@@ -1,12 +1,13 @@
 import React from 'react'
-import FavDestination from '../Components/FavDestination/FavDestination'
+import FavouriteDestination from '../Components/FavouriteDestination/FavouriteDestination'
 
 const Favourites = () => {
-  return (
-    <div>
-      <FavDestination />
-    </div>
-  )
+    return (
+        <div>
+
+            <FavouriteDestination />
+        </div>
+    )
 }
 
 export default Favourites

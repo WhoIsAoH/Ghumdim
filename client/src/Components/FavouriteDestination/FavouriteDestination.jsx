@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import './FavDestination.css'
+import './FavouriteDestination.css'
 import { DestinationContext } from '../../Context/DestinationContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
 
-const FavDestination = () => {
+const FavouriteDestination = () => {
     const { all_destination, favouriteItems, removeFromFavourite } = useContext(DestinationContext);
     return (
         <div className='favitems'>
@@ -32,6 +32,7 @@ const FavDestination = () => {
         </div>
     )
 
+
 }
 
-export default FavDestination
+export default FavouriteDestination

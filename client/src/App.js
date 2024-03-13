@@ -4,9 +4,9 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home';
 import Category from './Pages/Category'
 import LoginSignup from './Pages/LoginSignup'
-import Favourites from './Pages/Favourites'
 import Footer from './Components/Footer/Footer';
 import Destination from './Pages/Destination';
+import Favourites from './Pages/Favourites';
 
 function App() {
   return (
@@ -26,7 +26,8 @@ function App() {
             <Route path=':destinationId/' element={<Destination />} />
           </Route>
 
-          <Route path='/favourite' element={<Favourites />} />
+
+          <Route path='/favourites' element={<Favourites />} />
           <Route path='/login' element={<LoginSignup />} />
 
         </Routes>
