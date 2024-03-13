@@ -25,7 +25,18 @@ const DestinationContextProvider = (props) => {
         setFavouriteItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     }
 
-    const contextValue = { all_destination, favouriteItems, addToFavourite, removeFromFavourite };
+    //Total Favourite Destinations
+    const getTotalFavDestinations = () => {
+        let totalDestination = 0;
+        for (const item in favouriteItems) {
+            if (favouriteItems[item] > 0) {
+                totalDestination += favouriteItems[item];
+            }
+        }
+        return totalDestination
+    }
+
+    const contextValue = { all_destination, favouriteItems, addToFavourite, removeFromFavourite, getTotalFavDestinations };
 
     return (
         <DestinationContext.Provider value={contextValue}>

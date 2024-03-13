@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import logo from '../Assets/logo.png'
 import fav_icon from '../Assets/fav_icon.png'
 import { Link } from 'react-router-dom'
+import { DestinationContext } from '../../Context/DestinationContext'
 
 const Navbar = () => {
 
   const [menu, setMenu] = useState("home");
+  const { getTotalFavDestinations } = useContext(DestinationContext);
 
   return (
 
@@ -34,7 +36,7 @@ const Navbar = () => {
         <Link to='/login'><button>Login</button></Link>
 
         <Link to='/favourites'><img src={fav_icon} alt="" /></Link>
-        <div className='nav-fav-count'>0</div>
+        <div className='nav-fav-count'>{getTotalFavDestinations()}</div>
       </div>
     </div>
 

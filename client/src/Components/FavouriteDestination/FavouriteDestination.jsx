@@ -18,16 +18,17 @@ const FavouriteDestination = () => {
             {all_destination.map((e) => {
                 if (favouriteItems[e.id] > 0) {
                     return <div>
-                        <div className="favitems-format">
+                        <div className="favitems-format favtitems-format-main">
                             <img src={e.image} alt="" className='favicon-destination-icon' />
                             <p>{e.name}</p>
                             <p>{e.category}</p>
                             <p>{e.address}</p>
-                            <img src={remove_icon} onClick={() => { removeFromFavourite(e.id) }} alt="" />
+                            <img className='favicon-remove-icon' src={remove_icon} onClick={() => { removeFromFavourite(e.id) }} alt="" />
                         </div>
                         <hr />
                     </div>
                 }
+                return null;
             })}
         </div>
     )
