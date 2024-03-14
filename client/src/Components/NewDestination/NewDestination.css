@@ -1,27 +1,29 @@
-.new-destination{
+.new-destination {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
 
-.new-destination h1{
+.new-destination h1 {
     color: #171717;
     font-size: 50px;
     font-weight: 600;
 }
 
-.new-destination hr{
-    
+.new-destination hr {
+
     width: 200px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
 }
 
-.newdestinations-list{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+.newdestinations-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-top: 50px;
     gap: 30px;
 }
