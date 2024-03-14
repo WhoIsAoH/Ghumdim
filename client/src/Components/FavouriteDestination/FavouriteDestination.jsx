@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import './FavDestination.css'
+import './FavouriteDestination.css'
 import { DestinationContext } from '../../Context/DestinationContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
 
-const FavDestination = () => {
+const FavouriteDestination = () => {
     const { all_destination, favouriteItems, removeFromFavourite } = useContext(DestinationContext);
     return (
         <div className='favitems'>
@@ -18,20 +18,22 @@ const FavDestination = () => {
             {all_destination.map((e) => {
                 if (favouriteItems[e.id] > 0) {
                     return <div>
-                        <div className="favitems-format">
+                        <div className="favitems-format favtitems-format-main">
                             <img src={e.image} alt="" className='favicon-destination-icon' />
                             <p>{e.name}</p>
                             <p>{e.category}</p>
                             <p>{e.address}</p>
-                            <img src={remove_icon} onClick={() => { removeFromFavourite(e.id) }} alt="" />
+                            <img className='favicon-remove-icon' src={remove_icon} onClick={() => { removeFromFavourite(e.id) }} alt="" />
                         </div>
                         <hr />
                     </div>
                 }
+                return null;
             })}
         </div>
     )
 
+
 }
 
-export default FavDestination
+export default FavouriteDestination

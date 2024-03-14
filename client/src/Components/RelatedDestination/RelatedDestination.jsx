@@ -5,7 +5,7 @@ import Item from '../Items/Item'
 const RelatedDestination = () => {
     return (
         <div className='relateddestinations'>
-            <h1>RelatedProducts</h1>
+            <h1>Related Destinations</h1>
             <hr />
             <div className="relateddestination-item">
                 {data_product.map((item, i) => {
