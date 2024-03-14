@@ -1,9 +1,9 @@
 package com.aoh.ghumdim.places.service;
 
-import com.aoh.ghumdim.places.dto.PlaceRequestDto;
-import com.aoh.ghumdim.places.dto.PlaceResponseDto;
-import com.aoh.ghumdim.places.entity.Places;
-import com.aoh.ghumdim.places.repo.PlaceRepository;
+import com.aoh.ghumdim.places.dto.DestinationRequestDto;
+import com.aoh.ghumdim.places.dto.DestinationResponseDto;
+import com.aoh.ghumdim.places.entity.Destinations;
+import com.aoh.ghumdim.places.repo.DestinationRepository;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.shared.exception.ResourceNotFoundException;
@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RequestServiceImpl implements RequestService {
 
-    private final PlaceRepository placeRepository;
+    private final DestinationRepository placeRepository;
 
     private final ModelMapperService modelMapperService;
 
@@ -29,21 +29,21 @@ public class RequestServiceImpl implements RequestService {
 
 
     @Override
-    public List<PlaceResponseDto> getChangeRequest() {
-        List<Places> places = placeRepository.findAll();
+    public List<DestinationResponseDto> getChangeRequest() {
+        List<Destinations> places = placeRepository.findAll();
         return modelMapperService.entityToListDto(places);
     }
 
     @Override
-    public List<PlaceResponseDto> getChangeRequestWithSortSevirity(@PathVariable String field) {
-        List<Places> places = placeRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+    public List<DestinationResponseDto> getChangeRequestWithSortSevirity(@PathVariable String field) {
+        List<Destinations> places = placeRepository.findAll(Sort.by(Sort.Direction.ASC, field));
         return modelMapperService.entityToListDto(places);
     }
 
     @Override
-    public void createChange(PlaceRequestDto placeRequestDto) {
+    public void createChange(DestinationRequestDto placeRequestDto) {
         log.info("creating change request");
-        Places places = modelMapperService.crfRequestDtoToChangeForm(placeRequestDto);
+        Destinations places = modelMapperService.crfRequestDtoToChangeForm(placeRequestDto);
         log.info("author ko kuraa");
         log.info(String.valueOf(placeRequestDto.getAuthor()));
         Optional<User> mapUser = userRepository.findById(placeRequestDto.getAuthor());
@@ -55,8 +55,8 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public PlaceResponseDto getRequestById(Integer id) {
-        Places places = placeRepository.findById(id)
+    public DestinationResponseDto getRequestById(Integer id) {
+        Destinations places = placeRepository.findById(id)
                 .orElseThrow(() -> {
                 log.error("got error" );
                 throw new RuntimeException("error finding id with" + id);
@@ -68,10 +68,10 @@ public class RequestServiceImpl implements RequestService {
         return modelMapperService.changeFormToCRFRequestDto(places);
     }
 
-    public void updateRequestForm(Integer id, PlaceRequestDto placeRequestDto) {
-        Places existingRequest = placeRepository.findById(id)
+    public void updateRequestForm(Integer id, DestinationRequestDto placeRequestDto) {
+        Destinations existingRequest = placeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(placeRequestDto.getName()));
-        Places updatedRequest = modelMapperService.crfRequestDtoToChangeForm(placeRequestDto);
+        Destinations updatedRequest = modelMapperService.crfRequestDtoToChangeForm(placeRequestDto);
 //        existingRequest.setTopic(updatedRequest.getTopic());
 //        existingRequest.setDepartment(updatedRequest.getDepartment());
 //        existingRequest.setAssignTo(updatedRequest.getAssignTo());

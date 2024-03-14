@@ -16,7 +16,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Places {
+public class Destinations {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

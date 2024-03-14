@@ -22,4 +22,6 @@ public class GhumdimApplication {
 	public JavaMailSender mailSender(){
 		return new JavaMailSenderImpl();
 	}
+
+
 }

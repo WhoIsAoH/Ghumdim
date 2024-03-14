@@ -1,8 +1,8 @@
 package com.aoh.ghumdim.places.service;
 
-import com.aoh.ghumdim.places.dto.PlaceRequestDto;
-import com.aoh.ghumdim.places.dto.PlaceResponseDto;
-import com.aoh.ghumdim.places.entity.Places;
+import com.aoh.ghumdim.places.dto.DestinationRequestDto;
+import com.aoh.ghumdim.places.dto.DestinationResponseDto;
+import com.aoh.ghumdim.places.entity.Destinations;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -19,18 +19,18 @@ public class ModelMapperService {
 
     private final ModelMapper modelMapper;
 
-    public Places crfRequestDtoToChangeForm(PlaceRequestDto placeRequestDto){
-        return modelMapper.map(placeRequestDto, Places.class);
+    public Destinations crfRequestDtoToChangeForm(DestinationRequestDto placeRequestDto){
+        return modelMapper.map(placeRequestDto, Destinations.class);
     }
 
-    public PlaceResponseDto changeFormToCRFRequestDto(Places places){
-        PlaceResponseDto placeResponseDto = this.modelMapper.map(places, PlaceResponseDto.class);
+    public DestinationResponseDto changeFormToCRFRequestDto(Destinations places){
+        DestinationResponseDto placeResponseDto = this.modelMapper.map(places, DestinationResponseDto.class);
 //        placeResponseDto.setAuthorId(places.getAuthor().getId());
 //        log.info(String.valueOf(placeResponseDto.getAuthorId()));
         return placeResponseDto;
     }
 
-    public List<PlaceResponseDto> entityToListDto(List<Places> places){
+    public List<DestinationResponseDto> entityToListDto(List<Destinations> places){
         return places.stream().map(this:: changeFormToCRFRequestDto).collect(Collectors.toList());
     }
 }

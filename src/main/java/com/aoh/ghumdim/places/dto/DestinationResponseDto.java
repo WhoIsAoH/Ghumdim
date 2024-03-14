@@ -16,7 +16,7 @@ import java.util.Date;
 @Getter
 @Setter
 //@JsonIgnoreProperties
-public class PlaceResponseDto {
+public class DestinationResponseDto {
     private Integer id;
 
 
@@ -27,6 +27,6 @@ public class PlaceResponseDto {
     private String address;
     private Category category;
     private Integer latitude;
-    private Integer Integeritude;
+    private Integer Longitude;
     private DestinationStatus status;
 }

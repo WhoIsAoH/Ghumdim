@@ -18,14 +18,14 @@ import java.util.Date;
 @RequiredArgsConstructor
 @AllArgsConstructor
 //@JsonIgnoreProperties
-public class PlaceRequestDto {
+public class DestinationRequestDto {
     @NotNull(message = "topic is must required ")
     @Pattern(regexp = "^[a-zA-Z0-9\\s]{2,100}$", message = "Topic must contain only letters, numbers, and spaces and be between 2 and 100 characters Integer")
     private String name;
     private String address;
     private Category category;
     private Integer latitude;
-    private Integer Integeritude;
+    private Integer Longitude;
     private DestinationStatus status;
 
     @JsonAlias("author_id")

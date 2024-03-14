@@ -20,9 +20,6 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class JwtServiceimpl implements JwtService {
 
-
-
-
     private static final String SECRET_KEY = "xxC6yc0IJIujgqxvOFT+bQaTDQ5OxgvwZuDdZdwjCHpDKXLby4ubwIdk7NfCMGis\n";
 
     public String extractUsername(String token) {
@@ -35,21 +32,19 @@ public class JwtServiceimpl implements JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetail userDetail) {
+        return generateToken(new HashMap<>(), userDetail);
     }
 
 
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        UserDetail userDetail;
+    public String generateToken(Map<String, Object> extraClaims, UserDetail userDetail) {
+//        UserDetail userDetail;
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-//                .claim("hello",userDetails.getFirstName())
-//                .claim("second",userDetail.)
-//                .claim("test","rimesh dai")
-//                .claim("Role",)
+                .setSubject(userDetail.getUsername())
+//                .setClaim(userDetail.getRole())
+                .content("Role",userDetail.getRole())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 50))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)

@@ -26,6 +26,7 @@ public class User implements UserDetail{
     @Enumerated(EnumType.STRING)
     private Role role;
     private String location;
+    private int age;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -64,7 +65,7 @@ public class User implements UserDetail{
     }
 
     @Override
-    public String getFirstName() {
-        return firstname;
+    public String getRole() {
+        return getRole();
     }
 }
