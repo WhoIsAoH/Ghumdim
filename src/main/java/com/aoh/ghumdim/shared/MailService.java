@@ -22,9 +22,9 @@ public class MailService {
     private String mail;
     @Value("${spring.mail.password}")
     private String password;
-    public MailService(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
+//    public MailService(JavaMailSender mailSender) {
+//        this.mailSender = mailSender;
+//    }
 
     public void sendEmail(String toEmail, String subject, String body){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

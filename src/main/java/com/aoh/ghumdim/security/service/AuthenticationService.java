@@ -41,8 +41,8 @@ public class AuthenticationService {
                         .lastname(request.getLastname())
                         .email(request.getEmail())
                         .password(passwordEncoder.encode(request.getPassword()))
-
-//                .role(Role.ADMIN)
+                        .age(request.getAge())
+                        .location(request.getLocation())
                         .role(request.getRole())
                         .build();
                 repository.save(user);

@@ -28,7 +28,7 @@ public class Destinations {
     private String address;
     private Category category;
     private Integer latitude;
-    private Integer Integeritude;
+    private Integer Longitude;
     private DestinationStatus status;
 
 

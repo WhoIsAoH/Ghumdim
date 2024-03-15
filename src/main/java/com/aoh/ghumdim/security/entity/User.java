@@ -66,6 +66,6 @@ public class User implements UserDetail{
 
     @Override
     public String getRole() {
-        return getRole();
+        return role.name();
     }
 }
