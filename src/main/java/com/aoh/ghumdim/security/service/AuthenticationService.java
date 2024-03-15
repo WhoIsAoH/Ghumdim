@@ -1,8 +1,8 @@
 package com.aoh.ghumdim.security.service;
 
-import com.aoh.ghumdim.security.auth.AuthenticationRequest;
-import com.aoh.ghumdim.security.auth.AuthenticationResponse;
-import com.aoh.ghumdim.security.auth.RegisterRequest;
+import com.aoh.ghumdim.security.auth.AuthenticationRequestDto;
+import com.aoh.ghumdim.security.auth.AuthenticationResponseDto;
+import com.aoh.ghumdim.security.auth.RegisterRequestDto;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.shared.MailService;
@@ -29,7 +29,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final MailService mailService;
 
-    public UserResponse register(RegisterRequest request) {
+    public UserResponse register(RegisterRequestDto request) {
             Optional<User> optionalUser = repository.findByEmail(request.getEmail());
             if (optionalUser.isPresent()) {
                 log.info("user registered already");
@@ -47,13 +47,13 @@ public class AuthenticationService {
                         .build();
                 repository.save(user);
                 var jwtToken = jwtService.generateToken(user);
-                AuthenticationResponse jwt = new AuthenticationResponse(jwtToken);
+                AuthenticationResponseDto jwt = new AuthenticationResponseDto(jwtToken);
 //                return ResponseEntity.ok(jwtToken);
         mailService.sendEmail(user.getEmail(), MessageConstant.ACCOUNT_CREATION_SUCCESSFUL, MessageConstant.ACCOUNT_CREATE_BODY);
 
                 return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponseDto authenticate(AuthenticationRequestDto request) {
         log.info("login or authenticating");
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -68,7 +68,7 @@ public class AuthenticationService {
                         );
         var jwtToken = jwtService.generateToken(user);
 //        log.info();
-        return AuthenticationResponse.builder()
+        return AuthenticationResponseDto.builder()
                 .token(jwtToken)
                 .build();
     }

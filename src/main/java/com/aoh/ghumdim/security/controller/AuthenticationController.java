@@ -2,13 +2,12 @@ package com.aoh.ghumdim.security.controller;
 
 
 
-import com.aoh.ghumdim.security.auth.AuthenticationRequest;
-import com.aoh.ghumdim.security.auth.AuthenticationResponse;
-import com.aoh.ghumdim.security.auth.RegisterRequest;
+import com.aoh.ghumdim.security.auth.AuthenticationRequestDto;
+import com.aoh.ghumdim.security.auth.AuthenticationResponseDto;
+import com.aoh.ghumdim.security.auth.RegisterRequestDto;
 import com.aoh.ghumdim.security.service.AuthenticationService;
 import com.aoh.ghumdim.shared.UserResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +21,13 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
     @PostMapping("/register")
-    public UserResponse register(@RequestBody @Validated RegisterRequest request){
+    public UserResponse register(@RequestBody @Validated RegisterRequestDto request){
         return service.register(request);
     }
 
     @PostMapping("/authenticate")
-    public AuthenticationResponse authenticate(
-            @RequestBody AuthenticationRequest request
+    public AuthenticationResponseDto authenticate(
+            @RequestBody AuthenticationRequestDto request
     ){
         return service.authenticate(request);
 
