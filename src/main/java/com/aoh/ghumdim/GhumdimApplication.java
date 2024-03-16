@@ -6,13 +6,9 @@ import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.security.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -25,9 +21,6 @@ public class GhumdimApplication implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(GhumdimApplication.class, args);
 	}
-
-
-
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -66,8 +59,8 @@ public class GhumdimApplication implements CommandLineRunner{
 					.location("chabhiel")
 					.build();
 			log.info("creating basanta user");
-
 			authenticationService.register(user);
 		}
+
 	}
 }
