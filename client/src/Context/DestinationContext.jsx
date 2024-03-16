@@ -42,7 +42,6 @@ const DestinationContextProvider = (props) => {
         <DestinationContext.Provider value={contextValue}>
             {props.children}
         </DestinationContext.Provider>
-
     )
 }
 
