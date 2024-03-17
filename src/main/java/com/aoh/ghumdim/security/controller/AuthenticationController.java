@@ -2,17 +2,16 @@ package com.aoh.ghumdim.security.controller;
 
 
 
-import com.aoh.ghumdim.security.auth.AuthenticationRequestDto;
-import com.aoh.ghumdim.security.auth.AuthenticationResponseDto;
-import com.aoh.ghumdim.security.auth.RegisterRequestDto;
+import com.aoh.ghumdim.security.dto.AuthenticationRequestDto;
+import com.aoh.ghumdim.security.dto.AuthenticationResponseDto;
+import com.aoh.ghumdim.security.dto.RegisterRequestDto;
 import com.aoh.ghumdim.security.service.AuthenticationService;
 import com.aoh.ghumdim.shared.UserResponse;
+import com.aoh.ghumdim.security.service.UserService;
+import com.aoh.ghumdim.security.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -20,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     private final AuthenticationService service;
+    private final UserService userService;
+
     @PostMapping("/register")
     public UserResponse register(@RequestBody @Validated RegisterRequestDto request){
         return service.register(request);
@@ -30,7 +31,17 @@ public class AuthenticationController {
             @RequestBody AuthenticationRequestDto request
     ){
         return service.authenticate(request);
+    }
 
+    @GetMapping("/user/{id}")
+    public UserResponseDto getUser(@PathVariable Integer id) {
+        UserResponseDto userResponseDto=userService.getUserById(id);
+        return userResponseDto;
+    }
+    @GetMapping("/getUserByEmail")
+    public int getUserByEmail(@RequestParam String email) {
+        int userId=userService.getUserIdByEmail(email);
+        return userId;
     }
 
 }

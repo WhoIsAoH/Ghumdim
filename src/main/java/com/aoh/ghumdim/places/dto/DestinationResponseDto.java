@@ -1,17 +1,11 @@
 package com.aoh.ghumdim.places.dto;
 
-import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.shared.Category;
 import com.aoh.ghumdim.shared.DestinationStatus;
-import com.aoh.ghumdim.shared.ProgressStatus;
-import com.aoh.ghumdim.shared.Severity;
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,7 +20,9 @@ public class DestinationResponseDto {
     private String name;
     private String address;
     private Category category;
-    private Integer latitude;
-    private Integer Longitude;
+    private Double latitude;
+    private Double Longitude;
     private DestinationStatus status;
+    private String photo;
+    private double rating;
 }

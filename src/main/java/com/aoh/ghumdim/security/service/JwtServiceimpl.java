@@ -43,10 +43,11 @@ public class JwtServiceimpl implements JwtService {
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetail.getUsername())
+                .claim("roles",userDetail.getRole())
 //                .setClaim(userDetail.getRole())
 //                .content("Role",userDetail.getRole())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 50))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 50*24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

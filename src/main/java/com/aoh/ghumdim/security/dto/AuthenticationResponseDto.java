@@ -1,4 +1,4 @@
-package com.aoh.ghumdim.security.auth;
+package com.aoh.ghumdim.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequestDto {
-    private String email;
-    String password;
-
+@AllArgsConstructor
+public class AuthenticationResponseDto {
+    private String token;
 }

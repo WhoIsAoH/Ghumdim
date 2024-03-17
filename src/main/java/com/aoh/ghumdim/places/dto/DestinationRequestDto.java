@@ -2,16 +2,14 @@ package com.aoh.ghumdim.places.dto;
 
 import com.aoh.ghumdim.shared.Category;
 import com.aoh.ghumdim.shared.DestinationStatus;
-import com.aoh.ghumdim.shared.Severity;
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Date;
 
 @Data
 @Builder
@@ -24,9 +22,12 @@ public class DestinationRequestDto {
     private String name;
     private String address;
     private Category category;
-    private Integer latitude;
-    private Integer Longitude;
+    private Double latitude;
+    private Double Longitude;
     private DestinationStatus status;
+    private String contactNumber;
+    private double rating;
+
 
     @JsonAlias("author_id")
     private Integer author;

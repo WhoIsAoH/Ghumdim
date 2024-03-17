@@ -1,8 +1,9 @@
 package com.aoh.ghumdim.security.service;
 
-import com.aoh.ghumdim.security.auth.AuthenticationRequestDto;
-import com.aoh.ghumdim.security.auth.AuthenticationResponseDto;
-import com.aoh.ghumdim.security.auth.RegisterRequestDto;
+import com.aoh.ghumdim.security.dto.AuthenticationRequestDto;
+import com.aoh.ghumdim.security.dto.AuthenticationResponseDto;
+import com.aoh.ghumdim.security.dto.RegisterRequestDto;
+import com.aoh.ghumdim.security.entity.Role;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.shared.MailService;
@@ -43,7 +44,7 @@ public class AuthenticationService {
                         .password(passwordEncoder.encode(request.getPassword()))
                         .age(request.getAge())
                         .location(request.getLocation())
-                        .role(request.getRole())
+                        .role(Role.CLIENT)
                         .build();
                 repository.save(user);
                 var jwtToken = jwtService.generateToken(user);

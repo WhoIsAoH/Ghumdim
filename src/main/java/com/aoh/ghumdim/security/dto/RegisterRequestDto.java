@@ -1,4 +1,4 @@
-package com.aoh.ghumdim.security.auth;
+package com.aoh.ghumdim.security.dto;
 
 import com.aoh.ghumdim.security.entity.Role;
 import lombok.AllArgsConstructor;

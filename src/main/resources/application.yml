@@ -36,4 +36,4 @@ spring:
 #  ai.openai.apikey =
   ai:
     openai:
-      api-key: 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
+      api-key: ${openAi.key}
