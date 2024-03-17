@@ -38,3 +38,4 @@ out/
 
 #custom
 /src/main/resources/credential.yml
+/src/main/resources/serviceAccountKey.json
