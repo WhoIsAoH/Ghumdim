@@ -12,12 +12,12 @@ const DestinationDisplay = (props) => {
     return (
         <div className='destinationdisplay'>
             <div className="destinationdisplay-left">
-                <div className="destinationdisplay-img-list">
+                {/* <div className="destinationdisplay-img-list">
                     <img src={destination.image} alt="" />
                     <img src={destination.image} alt="" />
                     <img src={destination.image} alt="" />
                     <img src={destination.image} alt="" />
-                </div>
+                </div> */}
                 <div className="destinationdisplay-img">
                     <img className='destinationdisplay-main-img' src={destination.image} alt="" />
                 </div>

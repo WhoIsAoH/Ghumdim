@@ -1,33 +1,37 @@
-import d1_img from './Syambhunath.jpg'
+import d1_img from './Bouddha.jpg'
+import d2_img from './Taragaon.jpg'
+import d3_img from './Pashupatinath.png'
+import d4_img from './ShankhaPark.jpg'
+
 
 let popular_destination = [
 
     {
         id: 1,
-        name: "Swayambhunath Stupa",
+        name: "BouddhaStupa",
         image: d1_img,
-        address: "Swyambhu, Kathmandu",
+        address: "Bouddha, Kathmandu",
     },
 
     {
         id: 2,
-        name: "Swayambhunath Stupa",
-        image: d1_img,
-        address: "Swyambhu, Kathmandu",
+        name: "Taragaon Museum",
+        image: d2_img,
+        address: "Tusal, Kathmandu",
     },
 
     {
         id: 3,
-        name: "Swayambhunath Stupa",
-        image: d1_img,
-        address: "Swyambhu, Kathmandu",
+        name: "Pashupatinath Temple",
+        image: d3_img,
+        address: "Gausala, Kathmandu",
     },
 
     {
         id: 4,
-        name: "Swayambhunath Stupa",
-        image: d1_img,
-        address: "Swyambhu,Kathmandu",
+        name: "Shankha Park",
+        image: d4_img,
+        address: "Chakrapath, Kathmandu",
     },
 ];
 

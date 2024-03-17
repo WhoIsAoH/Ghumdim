@@ -7,8 +7,7 @@ const Hero = () => {
         <div className='hero'>
             <div className="hero-left">
                 {/* <h2>Your Travel Companion</h2> */}
-            <p>Travel, enjoy <br />and live a new<br /> and full life.</p>
-
+                <p>Travel, enjoy <br />and live a new<br /> and full life.</p>
 
                 <div className='high-rated'></div>
             </div>
@@ -18,7 +17,7 @@ const Hero = () => {
             </div>
         </div>
     )
-  
+
 }
 
 export default Hero

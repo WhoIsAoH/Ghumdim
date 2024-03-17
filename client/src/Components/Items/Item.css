@@ -13,15 +13,16 @@
 }
 
 .item img {
-    width: 70%;
+    /* width: 70%; */
+    width: 278px;
+    height: 440px;
+    object-fit: cover;
 
 }
 
 .item p {
     margin: 6px 0px;
 }
-
-
 
 .item:hover {
     transform: scale(1.05);

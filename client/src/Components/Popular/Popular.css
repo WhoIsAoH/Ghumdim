@@ -29,3 +29,28 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+
+@media only screen and (max-width: 768px) {
+    .popular {
+        /* gap: 10px; */
+        margin-bottom: 10px;
+    }
+
+    .popular h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .popular hr {
+
+        width: 100px;
+        height: 4px;
+        border-radius: 10px;
+
+    }
+
+    .popular-destination {
+        margin-top: 25px;
+        gap: 8px;
+    }
+}

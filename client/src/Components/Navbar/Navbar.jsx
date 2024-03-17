@@ -1,32 +1,30 @@
-import React, { useContext, useState } from 'react'
-import './Navbar.css'
-import logo from '../Assets/logo.png'
-import fav_icon from '../Assets/fav_icon.png'
-import { Link } from 'react-router-dom'
-import { DestinationContext } from '../../Context/DestinationContext'
-import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import React, { useContext, useState } from 'react';
+import './Navbar.css';
+import { Link } from 'react-router-dom';
+import { DestinationContext } from '../../Context/DestinationContext';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const Navbar = () => {
-
   const [menu, setMenu] = useState("home");
+  const [resmenu, setResMenu] = useState(false);
   const { getTotalFavDestinations } = useContext(DestinationContext);
 
+  const handleMenuToggle = () => {
+    setResMenu(!resmenu);
+  };
+
   return (
-
-    <div className='navbar'>
-
+    <div className={`navbar ${resmenu ? 'responsive' : ''}`}>
       <div className="nav-logo">
-        <img src={logo} alt="" />
-        <p style={{ color: 'rgb(235, 178, 72)' }}>G</p><p>humdim</p>
+        <p><span style={{ color: 'rgb(235, 178, 72)' }}>G</span>humdim</p>
       </div>
 
-      <ul className='nav-menu'>
+      <ul className={resmenu ? 'nav-menu-responsive' : 'nav-menu'}>
         <li onClick={() => { setMenu("home") }}><Link style={{ textDecoration: 'none' }} to='/'>Home</Link> {menu === "home" ? <hr /> : <></>} </li>
         <li onClick={() => { setMenu("religious") }}> <Link style={{ textDecoration: 'none' }} to='/religious'>Religious Place</Link>{menu === "religious" ? <hr /> : <></>} </li>
         <li onClick={() => { setMenu("parks") }}> <Link style={{ textDecoration: 'none' }} to='/parks'>Parks</Link>{menu === "parks" ? <hr /> : <></>} </li>
         <li onClick={() => { setMenu("hike") }}> <Link style={{ textDecoration: 'none' }} to='/hike'>Hike</Link>{menu === "hike" ? <hr /> : <></>} </li>
       </ul>
-
 
       <div className='search-bar'>
         <input type="search" placeholder='Search' />
@@ -34,20 +32,19 @@ const Navbar = () => {
       </div>
 
       <div className="nav-login-fav">
-        <Link to='/login'><button>Login</button></Link>
-
-        <Link to='/favourites'><img src={fav_icon} alt="" /></Link>
-        <div className='nav-fav-count'>{getTotalFavDestinations()}</div>
+        <Link to='/login'><i className="fa-solid fa-user"></i></Link>
+        <Link to='/favourites'>
+          <i className="fa-solid fa-star">
+            <span className='red'><sup>{getTotalFavDestinations()}</sup></span>
+          </i>
+        </Link>
       </div>
 
-      <div className='hamburger-menu'>
-        <button><AiOutlineClose style={{ width: '25px', height: '27px' }} /></button>
-        <button><AiOutlineMenu style={{ width: '25px', height: '27px' }} /></button>
+      <div className="mobile" onClick={handleMenuToggle}>
+        <i className={resmenu ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
       </div>
     </div>
+  );
+};
 
-
-  )
-}
-
-export default Navbar
+export default Navbar;

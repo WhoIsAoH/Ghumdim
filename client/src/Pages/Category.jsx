@@ -5,6 +5,7 @@ import dropdown_icon from '../Components/Assets/dropdown_icon.png'
 import Item from '../Components/Items/Item'
 
 const Category = (props) => {
+  
   const { all_destination } = useContext(DestinationContext);
   return (
     <div className='destination-category'>
