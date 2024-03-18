@@ -6,7 +6,7 @@ import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 import com.aoh.ghumdim.places.entity.Destinations;
 import com.aoh.ghumdim.places.repo.DestinationRepository;
 import com.aoh.ghumdim.places.service.ModelMapperService;
-import com.aoh.ghumdim.places.service.RequestService;
+import com.aoh.ghumdim.places.service.DestinationService;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.shared.DistanceCalculatorService;
@@ -28,9 +28,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RequestServiceImpl implements RequestService {
+public class DestinationServiceImpl implements DestinationService {
 
-    private final DestinationRepository placeRepository;
+    private final DestinationRepository destinationRepository;
 
     private final ModelMapperService modelMapperService;
 
@@ -41,13 +41,13 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public List<DestinationResponseDto> getDestinationDetail() {
-        List<Destinations> places = placeRepository.findAll();
+        List<Destinations> places = destinationRepository.findAll();
         return modelMapperService.entityToListDto(places);
     }
 
     @Override
     public List<DestinationResponseDto> getDestinationDetailWithSortSevirity(@PathVariable String field) {
-        List<Destinations> places = placeRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+        List<Destinations> places = destinationRepository.findAll(Sort.by(Sort.Direction.ASC, field));
         return modelMapperService.entityToListDto(places);
     }
 
@@ -65,14 +65,14 @@ public class RequestServiceImpl implements RequestService {
         log.info("testing ");
         places.setPhoto(imageService.upload(multipartFile));
 
-        placeRepository.save(places);
+        destinationRepository.save(places);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY+ places.getPhoto());
 
     }
 
     @Override
     public DestinationResponseDto getDestinationById(Integer id) {
-        Destinations places = placeRepository.findById(id)
+        Destinations places = destinationRepository.findById(id)
                 .orElseThrow(() -> {
                 log.error("got error" );
                 throw new RuntimeException("error finding id with" + id);
@@ -85,7 +85,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     public UserResponse updateDestination(Integer id, DestinationRequestDto placeRequestDto) {
-        Destinations destination = placeRepository.findById(id)
+        Destinations destination = destinationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(placeRequestDto.getName()));
         Destinations updatedDestination = modelMapperService.crfRequestDtoToChangeForm(placeRequestDto);
         destination.setName(updatedDestination.getName());
@@ -95,12 +95,12 @@ public class RequestServiceImpl implements RequestService {
         destination.setLongitude(updatedDestination.getLongitude());
         destination.setContactNumber(updatedDestination.getContactNumber());
         destination.setDescription(updatedDestination.getDescription());
-        placeRepository.save(destination);
+        destinationRepository.save(destination);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }
     @Override
     public List<DestinationResponseDto> getDestinationsSortedByDistance(double userLatitude, double userLongitude) {
-        List<Destinations> allDestinations = placeRepository.findAll();
+        List<Destinations> allDestinations = destinationRepository.findAll();
         List<Destinations> sortedDestinations = allDestinations.stream()
                 .sorted(Comparator.comparingDouble(destination ->
                          distanceCalculatorService.calculateDistance(destination.getLatitude(), destination.getLongitude(), userLatitude, userLongitude)))
@@ -108,6 +108,19 @@ public class RequestServiceImpl implements RequestService {
         return modelMapperService.entityToListDto(sortedDestinations);
     }
 
+    public UserResponse deleteDestination(Integer id){
+        destinationRepository.deleteById(id);
+        return new UserResponse(MessageConstant.DELETED_SUCCESSFULLY);
+    }
+
+    public List<Destinations> searchDestination(String searchKey){
+       return destinationRepository.findAll(searchKey);
+    }
+
+    public List<Destinations> findByCategory(String category){
+        return destinationRepository.findDestinationsByCategory(category);
+//        return null;
+    }
 
 
 }

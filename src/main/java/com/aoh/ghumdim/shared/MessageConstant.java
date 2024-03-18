@@ -9,4 +9,5 @@ public class MessageConstant {
     public static final String USER_NOT_FOUND = "User not found ";
     public static final String ACCOUNT_CREATION_SUCCESSFUL = "Account created sucessfully";
     public static final String ACCOUNT_CREATE_BODY = "you account from this email has beed created successfully please visit our website for further information";
+    public static final String DELETED_SUCCESSFULLY = "task deleted successfully";
 }

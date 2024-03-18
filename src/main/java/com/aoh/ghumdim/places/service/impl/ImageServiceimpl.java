@@ -50,7 +50,7 @@ public class ImageServiceimpl implements ImageService {
     private String uploadFile(File file, String fileName) throws IOException{
         BlobId blobId = BlobId.of("ghumdim.appspot.com",fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
-        InputStream inputStream = RequestServiceImpl.class.getClassLoader().getResourceAsStream("serviceAccountKey.json");
+        InputStream inputStream = DestinationServiceImpl.class.getClassLoader().getResourceAsStream("serviceAccountKey.json");
         Credentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
