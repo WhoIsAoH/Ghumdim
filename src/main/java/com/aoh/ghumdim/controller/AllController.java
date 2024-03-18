@@ -104,7 +104,7 @@ public class AllController {
         return destinationService.searchDestination(key);
     }
 
-    @GetMapping("/viewAllDestination/category/{cat}")
+    @GetMapping("viewAllDestination/{cat}")
     public List<Destinations> getAllByDestination(@PathVariable String cat){
         return destinationService.findByCategory(cat);
     }
