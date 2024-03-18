@@ -66,7 +66,7 @@ public class RequestServiceImpl implements RequestService {
         places.setPhoto(imageService.upload(multipartFile));
 
         placeRepository.save(places);
-        return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
+        return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY+ places.getPhoto());
 
     }
 
@@ -94,6 +94,7 @@ public class RequestServiceImpl implements RequestService {
         destination.setLatitude(updatedDestination.getLatitude());
         destination.setLongitude(updatedDestination.getLongitude());
         destination.setContactNumber(updatedDestination.getContactNumber());
+        destination.setDescription(updatedDestination.getDescription());
         placeRepository.save(destination);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }

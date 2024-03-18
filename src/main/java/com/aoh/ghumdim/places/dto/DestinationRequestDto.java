@@ -28,6 +28,8 @@ public class DestinationRequestDto {
     private String contactNumber;
     private double rating;
 
+    private String description;
+
 
     @JsonAlias("author_id")
     private Integer author;

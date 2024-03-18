@@ -25,4 +25,6 @@ public class DestinationResponseDto {
     private DestinationStatus status;
     private String photo;
     private double rating;
+    private String description;
+
 }

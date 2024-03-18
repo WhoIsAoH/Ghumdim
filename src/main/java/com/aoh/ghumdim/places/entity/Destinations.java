@@ -24,14 +24,15 @@ public class Destinations {
 
     private String name;
     private String address;
-    private Category category;
+    private String category;
     private Double latitude;
     private Double Longitude;
-    private DestinationStatus status;
+    private String status;
     private String contactNumber;
     private String photo;
     private double rating;
 
+    private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private User author;

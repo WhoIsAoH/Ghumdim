@@ -28,15 +28,13 @@ public class DestinationController {
 
 
     @PostMapping("/createDestination")
-    public void createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile file){
-        requestService.createDestination(placeRequestDto, file);
+    public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile file){
+        return requestService.createDestination(placeRequestDto, file);
     }
     @PostMapping("/addDestinationPhoto")
     public String addDestinationPhoto(@RequestPart("file") MultipartFile multipartFile){
         return imageService.upload(multipartFile);
-//        return  requestService.upload(multipartFile);
     }
-
     @GetMapping("/viewDestination/{id}")
     public ResponseEntity<DestinationResponseDto> viewDestination(@PathVariable Integer id){
         DestinationResponseDto placeResponseDto = requestService.getDestinationById(id);
@@ -53,8 +51,4 @@ public class DestinationController {
         List<DestinationResponseDto> sortedDestinations = requestService.getDestinationsSortedByDistance(userLatitude, userLongitude);
         return ResponseEntity.ok(sortedDestinations);
     }
-
-
-
-
 }

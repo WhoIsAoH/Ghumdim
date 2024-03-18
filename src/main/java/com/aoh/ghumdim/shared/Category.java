@@ -4,5 +4,6 @@ public enum Category {
     RELIGIOUS,
     HIKE,
     PARKS,
-    TREKKING
+    TREKKING,
+    FOOD
 }
