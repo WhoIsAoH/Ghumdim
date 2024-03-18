@@ -7,6 +7,7 @@ import LoginSignup from './Pages/LoginSignup'
 import Footer from './Components/Footer/Footer';
 import Destination from './Pages/Destination';
 import Favourites from './Pages/Favourites';
+import AddDes from './Pages/AddDes';
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home />} />
+          {/* <Route path='adddestination' element={<Home category="button" />} /> */}
           <Route path='/religious' element={<Category category="religious" />} />
           <Route path='/parks' element={<Category category="parks" />} />
           <Route path='/hike' element={<Category category="hike" />} />
+          <Route path='/add-destination' element={<AddDes />} />
 
           <Route path="/destination" element={<Destination />}>
             <Route path=':destinationId/' element={<Destination />} />

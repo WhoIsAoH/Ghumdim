@@ -16,8 +16,10 @@
 
 .hero-left p {
     color: #171717;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    line-height: 1;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .hero-right {
@@ -37,6 +39,29 @@
     object-fit: contain;
 }
 
+.hero-left a {
+    display: flex;
+}
+
+.add-des {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 20px;
+    color: white;
+    background: #FF4141;
+    margin-bottom: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+
 @media only screen and (max-width: 768px) {
 
     .hero {
@@ -54,7 +79,7 @@
     }
 
     .hero-left p {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .hero-right {
@@ -84,7 +109,6 @@
     }
 
     .hero-left p {
-
         font-size: 1rem;
 
     }

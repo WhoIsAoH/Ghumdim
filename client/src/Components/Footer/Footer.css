@@ -5,13 +5,15 @@
     align-items: center;
     gap: 50px;
     bottom: 0;
+    padding: 20px;
 }
 
-.footer-logo {
+/* .footer-logo {
     display: flex;
     align-items: center;
     gap: 20px;
-}
+    font-size: 1.5rem;
+} */
 
 .footer-logo p {
     color: rgb(110, 110, 110);
@@ -65,4 +67,10 @@
     border-radius: 10px;
     height: 3px;
     background: #c7c7c7;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-logo p {
+        font-size: 24px;
+    }
 }
