@@ -119,7 +119,6 @@ public class DestinationServiceImpl implements DestinationService {
 
     public List<Destinations> findByCategory(String category){
         return destinationRepository.findDestinationsByCategory(category);
-//        return null;
     }
 
 

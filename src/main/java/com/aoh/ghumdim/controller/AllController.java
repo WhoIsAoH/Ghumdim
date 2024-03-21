@@ -1,5 +1,6 @@
 package com.aoh.ghumdim.controller;
 
+import com.aoh.ghumdim.adminReview.service.AdminReviewService;
 import com.aoh.ghumdim.places.dto.DestinationRequestDto;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 import com.aoh.ghumdim.places.entity.Destinations;
@@ -124,5 +125,15 @@ public class AllController {
         return reviewService.getAllReview();
     }
 
+
+
+
+    //admin action for status:
+    private final AdminReviewService adminReviewService;
+
+    @PostMapping("/changeStatus/{id}")
+    public UserResponse changeDestinationStatus(@PathVariable Integer id, @RequestBody String status){
+        return adminReviewService.changeStatus(id, status);
+    }
 
 }
