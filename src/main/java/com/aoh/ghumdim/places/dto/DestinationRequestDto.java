@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Builder
@@ -29,6 +30,7 @@ public class DestinationRequestDto {
     private double rating;
 
     private String description;
+    private MultipartFile multiFile;
 
 
     @JsonAlias("author_id")

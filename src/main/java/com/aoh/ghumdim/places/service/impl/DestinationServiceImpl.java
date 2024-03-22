@@ -52,7 +52,7 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
-    public UserResponse createDestination(DestinationRequestDto placeRequestDto, MultipartFile multipartFile) {
+    public UserResponse createDestination(DestinationRequestDto placeRequestDto) {
 //        Photos photos = new Photos();
 //        photos.setPhoto(imageService.upload(multipartFile));
 //        imageRepository.save(photos);
@@ -63,7 +63,8 @@ public class DestinationServiceImpl implements DestinationService {
         Optional<User> mapUser = userRepository.findById(placeRequestDto.getAuthor());
         places.setAuthor(mapUser.get());
         log.info("testing ");
-        places.setPhoto(imageService.upload(multipartFile));
+        places.setPhoto(imageService.upload(placeRequestDto.getMultiFile()));
+//        places.setPhoto(imageService.upload(multipartFile));
 
         destinationRepository.save(places);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY+ places.getPhoto());
