@@ -71,8 +71,8 @@ public class AllController {
     }
 
     @PostMapping("/createDestination")
-    public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto){
-        return destinationService.createDestination(placeRequestDto);
+    public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile multipartFile){
+        return destinationService.createDestination(placeRequestDto, multipartFile);
     }
     @PostMapping("/addDestinationPhoto")
     public String addDestinationPhoto(@RequestPart("file") MultipartFile multipartFile){

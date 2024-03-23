@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface DestinationService {
-    UserResponse createDestination(DestinationRequestDto placeRequestDto);
+    UserResponse createDestination(DestinationRequestDto placeRequestDto, MultipartFile multipartFile);
 
     List<DestinationResponseDto> getDestinationDetail();
 

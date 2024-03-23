@@ -1,12 +1,12 @@
 package com.aoh.ghumdim.places.service.impl;
 
+import com.aoh.ghumdim.places.service.DestinationService;
 import com.aoh.ghumdim.places.service.ImageService;
 import com.aoh.ghumdim.places.dto.DestinationRequestDto;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 import com.aoh.ghumdim.places.entity.Destinations;
 import com.aoh.ghumdim.places.repo.DestinationRepository;
 import com.aoh.ghumdim.places.service.ModelMapperService;
-import com.aoh.ghumdim.places.service.DestinationService;
 import com.aoh.ghumdim.security.entity.User;
 import com.aoh.ghumdim.security.repo.UserRepository;
 import com.aoh.ghumdim.shared.DistanceCalculatorService;
@@ -52,7 +52,7 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
-    public UserResponse createDestination(DestinationRequestDto placeRequestDto) {
+    public UserResponse createDestination(DestinationRequestDto placeRequestDto, MultipartFile multipartFile) {
 //        Photos photos = new Photos();
 //        photos.setPhoto(imageService.upload(multipartFile));
 //        imageRepository.save(photos);
@@ -63,8 +63,8 @@ public class DestinationServiceImpl implements DestinationService {
         Optional<User> mapUser = userRepository.findById(placeRequestDto.getAuthor());
         places.setAuthor(mapUser.get());
         log.info("testing ");
-        places.setPhoto(imageService.upload(placeRequestDto.getMultiFile()));
-//        places.setPhoto(imageService.upload(multipartFile));
+//        places.setPhoto(imageService.upload(placeRequestDto.getMultiFile()));
+        places.setPhoto(imageService.upload(multipartFile));
 
         destinationRepository.save(places);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY+ places.getPhoto());

@@ -30,7 +30,7 @@ public class DestinationRequestDto {
     private double rating;
 
     private String description;
-    private MultipartFile multiFile;
+//    private MultipartFile multiFile;
 
 
     @JsonAlias("author_id")
