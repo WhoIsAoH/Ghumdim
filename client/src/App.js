@@ -27,14 +27,12 @@ function App() {
           <Route path='/hike' element={<Category category="hike" />} />
           <Route path='/add-destination' element={<AddDes />} />
           <Route path='/admin' element={<Admin />} />
-          <Route path='/admindestinationdisplay' element={<AdminDestinationDisplay />} />
-
+          <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />
 
           <Route path="/destination" element={<Destination />}>
             {/* <Route path='/destination/:id' element={<Destination />} /> */}
             <Route path=':destinationId' element={<Destination />} />
           </Route>
-
 
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/login' element={<LoginSignup />} />

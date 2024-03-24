@@ -48,10 +48,12 @@ const DestinationDisplay = (props) => {
                 </div>
                 <div className='destinationdisplay-right-description'>
                     <h4>Description</h4>
-                    {alldestination?.description}
+                    <p>{alldestination?.description}</p>
                 </div>
                 <div className='destinationdisplay-right-location'>
-                    <p>Location: {alldestination?.latitude},{alldestination?.longitude}</p>
+                    <p>Location: {alldestination?.address}</p>
+                    <p>Latitude:{alldestination?.latitude}</p>
+                    <p>Longitude:{alldestination?.longitude}</p>
                     {/* <p>{alldestination?.author}</p> */}
                 </div>
 

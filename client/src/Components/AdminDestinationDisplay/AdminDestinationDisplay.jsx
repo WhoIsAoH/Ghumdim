@@ -6,6 +6,7 @@ import star_dull_icon from "../Assets/star_dull_icon.png"
 import { DestinationContext } from '../../Context/DestinationContext'
 import Axios, { all } from 'axios'
 import './AdminDestinationDisplay.css'
+import AdminEditForm from '../EditForm/AdminEditForm'
 
 const AdminDestinationDisplay = (props) => {
     const { destinationId } = useParams();
@@ -74,8 +75,9 @@ const AdminDestinationDisplay = (props) => {
                     <div className="modal">
                         <div onClick={togglemodal} className="overlay"></div>
                         <div className='modal-content'>
-                            <h2>modaltitle</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum provident inventore iste.</p>
+                            <AdminEditForm />
+                            {/* <h2>{alldestination?.name}</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum provident inventore iste.</p> */}
                             <button className='close-modal' onClick={togglemodal}>Close</button>
                         </div>
                     </div>

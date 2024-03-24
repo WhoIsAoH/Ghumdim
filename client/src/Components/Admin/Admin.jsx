@@ -55,7 +55,7 @@ const Admin = (props) => {
 
                             </td>
                             <td>
-                                <Link to='admindestinationdisplay' ><button className='edit-des-button'  >Edit</button></Link>
+                                <Link to={`/admindestinationdisplay/${destination.id}`}><button className='edit-des-button'  >Edit</button></Link>
                             </td>
 
                         </tr>

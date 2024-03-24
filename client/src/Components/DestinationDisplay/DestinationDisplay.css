@@ -48,12 +48,14 @@
     border-radius: 25px;
     color: #1c1c1c;
     padding: 10px;
-    max-width: 200px;
+    max-width: 400px;
 }
 
 .destinationdisplay-right-description h4 {
     text-decoration: underline;
 }
+
+
 
 .destinationdisplay-right button {
     padding: 6px 16px;
