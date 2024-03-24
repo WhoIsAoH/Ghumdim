@@ -11,22 +11,22 @@ const Footer = () => {
         <p><span style={{ color: 'rgb(235, 178, 72)' }}>G</span>humdim</p>
       </div>
       <ul className="footer-links">
-        <li>Destinations</li>
+        {/* <li>Destinations</li> */}
         <li>About Us</li>
         <li>Contact Us</li>
       </ul>
       <div className="footer-social-icon">
 
         <div className="footer-icons-container">
-          <i class="fa-brands fa-instagram"></i>
+          <i className="fa-brands fa-instagram"></i>
         </div>
 
         <div className="footer-icons-container">
-          <i class="fa-brands fa-twitter"></i>
+          <i className="fa-brands fa-twitter"></i>
         </div>
 
         <div className="footer-icons-container">
-          <i class="fa-brands fa-facebook"></i>
+          <i className="fa-brands fa-facebook"></i>
         </div>
       </div>
 

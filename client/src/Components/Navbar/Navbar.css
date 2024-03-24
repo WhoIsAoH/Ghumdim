@@ -59,17 +59,14 @@
 .search-bar {
     align-self: center;
     height: 35px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 0 auto;
     background: #fff;
     overflow: hidden;
     padding: 10px;
     border-bottom: 2px solid rgb(235, 178, 72);
-
 }
 
 .search-bar input {
@@ -80,6 +77,7 @@
     font-size: 15px;
     padding: 0 10px;
     outline: none;
+    border: 0;
 }
 
 .search-bar button {
@@ -89,17 +87,17 @@
     background: #fff;
     position: relative;
     cursor: pointer;
-    background: #fff;
+    border: 0;
 }
 
 
 
 .nav-login-fav {
     display: flex;
+    align-items: center;
     padding: 10px;
     margin: 5px;
     gap: 10px;
-
 }
 
 .nav-login-fav i {
@@ -114,10 +112,10 @@
 
 
 
-.nav-login-fav img {
+/* .nav-login-fav img {
     width: 30px;
     height: 30px;
-}
+} */
 
 .nav-login-cart button:active {
     background: #f3f3f3;
@@ -134,12 +132,78 @@
 }
 
 @media only screen and (max-width: 768px) {
+
+    .nav-logo p {
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 50%;
+        border-bottom: 4px solid rgb(235, 178, 72);
+        padding: 8px;
+    }
+
+    .search-bar {
+        height: 30px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 6px;
+    }
+
+
+    .search-bar input {
+        width: 70%;
+        height: 20px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .search-bar button {
+        width: 20px;
+        height: 20px;
+    }
+
     .nav-menu {
+        display: none;
+        text-decoration: none;
+        /* visibility: visible; */
+    }
+
+
+
+    .nav-menu-responsive {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        font-size: 0.6rem;
+        right: -100px;
+    }
+
+    .nav-menu-responsive li {
+        text-decoration: none;
+    }
+
+    .nav-menu-responsive hr {
         display: none;
     }
 
-    .mobile {
-        display: block;
-        visibility: visible;
+    .nav-login-fav {
+        gap: 10px;
     }
+
+    .nav-login-fav i {
+
+        padding: 1px;
+        font-size: 1rem;
+
+    }
+
+    .mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+
+    }
+
+
+
 }

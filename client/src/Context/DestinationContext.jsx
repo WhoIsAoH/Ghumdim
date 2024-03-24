@@ -17,9 +17,11 @@ const DestinationContextProvider = (props) => {
 
     // add to cart
     const addToFavourite = (itemId) => {
+
         setFavouriteItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
-        console.log(favouriteItems);
+        // console.log(favouriteItems);
     }
+
     // remove from cart
     const removeFromFavourite = (itemId) => {
         setFavouriteItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))

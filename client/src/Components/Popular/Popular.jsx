@@ -10,7 +10,7 @@ const Popular = () => {
       <hr />
       <div className='popular-destination'>
         {popular_destination.map((item, i) => {
-          return <Item key={i} id={item.id} name={item.name} image={item.image} address={item.address} />
+          return <Item key={i} id={item.id} name={item.name} image={item.image} address={item.address} status={item.status} />
         })}
       </div>
     </div>

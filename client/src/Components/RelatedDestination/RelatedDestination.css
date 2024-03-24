@@ -22,5 +22,16 @@
 .relateddestination-item {
     margin-top: 50px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .relateddestinations h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
 }

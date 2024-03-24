@@ -16,10 +16,10 @@ const Destination = () => {
     < div >
       <Breadcrum destination={destination} />
       <DestinationDisplay destination={destination} />
-      <DescriptionBox />
+      {/* <DescriptionBox /> */}
       <RelatedDestination />
     </div >
-  )
+  );
 }
 
 export default Destination

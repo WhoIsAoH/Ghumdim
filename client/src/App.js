@@ -8,6 +8,8 @@ import Footer from './Components/Footer/Footer';
 import Destination from './Pages/Destination';
 import Favourites from './Pages/Favourites';
 import AddDes from './Pages/AddDes';
+import Admin from './Components/Admin/Admin';
+import AdminDestinationDisplay from './Components/AdminDestinationDisplay/AdminDestinationDisplay';
 
 function App() {
   return (
@@ -24,9 +26,13 @@ function App() {
           <Route path='/parks' element={<Category category="parks" />} />
           <Route path='/hike' element={<Category category="hike" />} />
           <Route path='/add-destination' element={<AddDes />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/admindestinationdisplay' element={<AdminDestinationDisplay />} />
+
 
           <Route path="/destination" element={<Destination />}>
-            <Route path=':destinationId/' element={<Destination />} />
+            {/* <Route path='/destination/:id' element={<Destination />} /> */}
+            <Route path=':destinationId' element={<Destination />} />
           </Route>
 
 

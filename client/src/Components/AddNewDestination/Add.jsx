@@ -1,97 +1,107 @@
 import React, { useState, useEffect } from 'react';
 import './Add.css';
+import axios from 'axios';
 
 const AddDestinationForm = () => {
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [category, setCategory] = useState('RELIGIOUS');
-    const [contactNumber, setContactNumber] = useState('');
-    const [image, setImage] = useState(null);
-    const [rating, setRating] = useState(0);
-    const [description, setDescription] = useState('');
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [destinationdata, setDestinationData] = useState({
+        name: '',
+        address: '',
+        category: '',
+        latitude: '',
+        status: '',
+        contactNumber: '',
+        rating: 1,
+        description: '',
+        author: 1, // Assuming you need to set the author field
+        longitude: ''
+        // multiFile: null,
+    });
+
+    const [multiFile, setMultiFile] = useState(null); // State to store file
+
     const [isCurrentLocation, setIsCurrentLocation] = useState(false); // New state for checkbox
 
     useEffect(() => {
         if (isCurrentLocation && "geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                setLatitude(position.coords.latitude);
-                setLongitude(position.coords.longitude);
+                setDestinationData({
+                    ...destinationdata,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+
             });
         } else {
-            setLatitude('');
-            setLongitude('');
+            setDestinationData({
+                ...destinationdata,
+                latitude: '',
+                longitude: ''
+            })
+
         }
     }, [isCurrentLocation]);
 
-    const handleNameChange = (e) => {
-        setName(e.target.value);
+    const handleChange = (e) => {
+        const { name, value, type, files } = e.target;
+        const newValue = type === 'file' ? files[0] : value;
+
+        setDestinationData({ ...destinationdata, [name]: newValue });
+        console.log('formDta', destinationdata);
     };
 
-    const handleAddressChange = (e) => {
-        setAddress(e.target.value);
-    };
-
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
-    };
-
-    const handleContactNumberChange = (e) => {
-        setContactNumber(e.target.value);
-    };
-
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
-    };
-
-    const handleRatingChange = (e) => {
-        setRating(parseInt(e.target.value));
-    };
-
-    const handleDescriptionChange = (e) => {
-        setDescription(e.target.value);
-    };
-
-    const handleLatitudeChange = (e) => {
-        setLatitude(e.target.value);
-    };
-
-    const handleLongitudeChange = (e) => {
-        setLongitude(e.target.value);
-    };
 
     const handleCurrentLocationChange = (e) => {
         setIsCurrentLocation(e.target.checked);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you can handle form submission
-        const formData = {
-            name,
-            address,
-            category,
-            contactNumber,
-            image,
-            rating,
-            description,
-            latitude: isCurrentLocation ? 'CURRENT' : latitude || null, // Set to 'CURRENT' if current location checkbox is checked
-            longitude: isCurrentLocation ? 'CURRENT' : longitude || null, // Set to 'CURRENT' if current location checkbox is checked
-        };
-        console.log('Form Data:', formData);
+
+        try {
+            const response = await axios.post('http://localhost:8080/ghumdim/createDestination', {
+                // destinationdata.name,
+                // destinationdata.address,
+                // destinationdata.category,
+                // destinationdata.latitude,
+                // destinationdata.status,
+                // destinationdata.contactNumber,
+                // destinationdata.rating,
+                // destinationdata.description,
+                // destinationdata.author, // Assuming you need to set the author field
+                // destinationdata.longitude,
+                // destinationdata.multiFile,
+            },
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+
+
+                    }
+                    // body: formData
+                });
+            console.log(response.data);
+            setDestinationData({
+                name: '',
+                address: '',
+                category: '',
+                latitude: '',
+                status: '',
+                contactNumber: '',
+                rating: 1,
+                description: '',
+                author: 1, // Assuming you need to set the author field
+                longitude: '',
+                multiFile: null,
+            })
+        } catch (error) {
+            console.error(error);
+        }
+
         // Reset the form after submission
-        setName('');
-        setAddress('');
-        setCategory('RELIGIOUS');
-        setContactNumber('');
-        setImage(null);
-        setRating(0);
-        setDescription('');
-        setLatitude('');
-        setLongitude('');
-        setIsCurrentLocation(false); // Reset checkbox state
+        // ...
     };
+
+
 
     return (
         <div className="add-des-container">
@@ -100,8 +110,9 @@ const AddDestinationForm = () => {
                 <input
                     type="text"
                     id="name"
-                    value={name}
-                    onChange={handleNameChange}
+                    name='name'
+                    value={destinationdata.name}
+                    onChange={handleChange}
                     required
                 />
 
@@ -109,13 +120,14 @@ const AddDestinationForm = () => {
                 <input
                     type="text"
                     id="address"
-                    value={address}
-                    onChange={handleAddressChange}
+                    name='address'
+                    value={destinationdata.address}
+                    onChange={handleChange}
                     required
                 />
 
                 <label htmlFor="category">Category:</label>
-                <select id="category" value={category} onChange={handleCategoryChange}>
+                <select id="category" name='category' value={destinationdata.category} onChange={handleChange}>
                     <option value="RELIGIOUS">Religious</option>
                     <option value="HIKE">Hike</option>
                     <option value="PARKS">Parks</option>
@@ -127,21 +139,24 @@ const AddDestinationForm = () => {
                 <input
                     type="tel"
                     id="contactNumber"
-                    value={contactNumber}
-                    onChange={handleContactNumberChange}
+                    name='contactNumber'
+                    value={destinationdata.contactNumber}
+                    onChange={handleChange}
                 />
 
                 <label htmlFor="image">Upload Image:</label>
                 <input
                     type="file"
                     id="image"
-                    accept="image/*"
-                    onChange={handleImageChange}
+                    name='multiFile'
+                    value={destinationdata.multiFile}
+                    // onChange={handleChange}
+                    onChange={(e) => setMultiFile(e.target.files[0])} // Store selected file
                     required
                 />
 
                 <label htmlFor="rating">Ratings:</label>
-                <select id="rating" value={rating} onChange={handleRatingChange}>
+                <select id="rating" name='rating' value={destinationdata.rating} onChange={handleChange}>
                     {[1, 2, 3, 4, 5].map((num) => (
                         <option key={num} value={num}>
                             {num}
@@ -152,14 +167,16 @@ const AddDestinationForm = () => {
                 <label htmlFor="description">Description:</label>
                 <textarea
                     id="description"
-                    value={description}
-                    onChange={handleDescriptionChange}
+                    name='description'
+                    value={destinationdata.description}
+                    onChange={handleChange}
                 ></textarea>
 
                 <label htmlFor="currentLocation">Is this your current location?</label>
                 <input
                     type="checkbox"
                     id="currentLocation"
+                    name='currentLocation'
                     checked={isCurrentLocation}
                     onChange={handleCurrentLocationChange}
                 /> <br />
@@ -168,8 +185,9 @@ const AddDestinationForm = () => {
                 <input
                     type="text"
                     id="latitude"
-                    value={latitude}
-                    onChange={handleLatitudeChange}
+                    name='latitude'
+                    value={destinationdata.latitude}
+                    onChange={handleChange}
                     disabled={isCurrentLocation}
                 />
 
@@ -177,8 +195,9 @@ const AddDestinationForm = () => {
                 <input
                     type="text"
                     id="longitude"
-                    value={longitude}
-                    onChange={handleLongitudeChange}
+                    name='longitude'
+                    value={destinationdata.longitude}
+                    onChange={handleChange}
                     disabled={isCurrentLocation}
                 />
 

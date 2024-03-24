@@ -1,7 +1,10 @@
 .destinationdisplay {
     display: flex;
+    padding: 50px;
     margin: 0px 170px;
-
+    margin-bottom: 12rem;
+    /* flex-direction: column; */
+    /* height: 90vh; */
 }
 
 .destinationdisplay-left {
@@ -9,27 +12,17 @@
     gap: 17px;
 }
 
-/* .destinationdisplay-img-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 140px;
-}
-
-.destinationdisplay-img-list img {
-    height: 141px;
-    object-fit: cover;
-} */
 
 .destinationdisplay-main-img {
-    object-fit: cover;
-    width: 700px;
-    height: 613px;
+    object-fit: contain;
+    width: 500px;
+    height: 500px;
 }
 
 .destinationdisplay-right {
     margin: 0px 70px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
 
 }
@@ -50,8 +43,16 @@
 }
 
 .destinationdisplay-right-description {
+    margin: 10px 0px 5px 0px;
+    border: 1px solid black;
+    border-radius: 25px;
     color: #1c1c1c;
-    padding: 2px;
+    padding: 10px;
+    max-width: 200px;
+}
+
+.destinationdisplay-right-description h4 {
+    text-decoration: underline;
 }
 
 .destinationdisplay-right button {
@@ -63,8 +64,46 @@
     border-radius: 20px;
     color: white;
     background: #FF4141;
-    margin-bottom: 40px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .destinationdisplay {
+        display: flex;
+        margin: 0px 50px;
+        margin-bottom: 10rem;
+
+    }
+
+    .destinationdisplay-main-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .destinationdisplay-right h1 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .destinationdisplay-right button {
+        padding: 6px 16px;
+        width: 90px;
+        height: 30px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .destinationdisplay-right-description {
+        margin: 10px 0px 5px 0px;
+        padding: 5px;
+        max-width: 200px;
+        font-size: 10px;
+    }
+
 }
