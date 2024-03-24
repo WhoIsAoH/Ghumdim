@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// import './DestinationDisplay.css'
 import star_icon from '../Assets/star_icon.png'
 import star_dull_icon from "../Assets/star_dull_icon.png"
 import { DestinationContext } from '../../Context/DestinationContext'
 import Axios, { all } from 'axios'
 import './AdminDestinationDisplay.css'
+
 import AdminEditForm from '../EditForm/AdminEditForm'
 
 const AdminDestinationDisplay = (props) => {
@@ -76,8 +76,6 @@ const AdminDestinationDisplay = (props) => {
                         <div onClick={togglemodal} className="overlay"></div>
                         <div className='modal-content'>
                             <AdminEditForm />
-                            {/* <h2>{alldestination?.name}</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum provident inventore iste.</p> */}
                             <button className='close-modal' onClick={togglemodal}>Close</button>
                         </div>
                     </div>

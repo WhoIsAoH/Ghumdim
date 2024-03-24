@@ -47,11 +47,11 @@ const Admin = (props) => {
                             <td>{destination.name}</td>
                             <td>{destination.category}</td>
                             <td>{destination.address}</td>
-                            <td>
-                                <select value={destination.status} onChange={(e) => handleStatusChange(index, e.target.value)}>
+                            <td>{destination.status}
+                                {/* <select value={destination.status} onChange={(e) => handleStatusChange(index, e.target.value)}>
                                     <option value="pending">Pending</option>
                                     <option value="verified">Verified</option>
-                                </select>
+                                </select> */}
 
                             </td>
                             <td>

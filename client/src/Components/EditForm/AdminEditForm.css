@@ -1,21 +1,22 @@
-.add-destination-form {
+.add-edit-form {
     max-width: 400px;
     width: 100%;
+    /* height: 50%; */
     padding: 20px;
     background: #fff;
     /* background-color: #f8f8f8; */
-    border-radius: 10px;
-    margin: 5rem auto;
+    border-radius: 20px;
+    margin: 2rem auto;
 }
 
-.add-destination-form label {
+.add-edit-form label {
     margin-bottom: 5px;
 }
 
-.add-destination-form input[type='text'],
-.add-destination-form input[type='tel'],
-.add-destination-form select,
-.add-destination-form textarea {
+.add-edit-form input[type='text'],
+.add-edit-form input[type='tel'],
+.add-edit-form select,
+.add-edit-form textarea {
     width: 100%;
     margin-bottom: 15px;
     padding: 8px;
@@ -24,11 +25,11 @@
     box-sizing: border-box;
 }
 
-.add-destination-form textarea {
+.add-edit-form textarea {
     resize: vertical;
 }
 
-.add-destination-form button {
+.add-edit-form button {
     width: 100%;
     padding: 10px;
     background: #FF4141;
@@ -38,13 +39,13 @@
     cursor: pointer;
 }
 
-.add-destination-form button:hover {
+.add-edit-form button:hover {
     background-color: #0056b3;
 }
 
 /* Media Query for smaller screens */
 @media (max-width: 768px) {
-    .add-destination-form {
+    .add-edit-form {
         max-width: 90%;
     }
 }

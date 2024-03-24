@@ -1,8 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './AdminEditForm.css'
 
 const AdminEditForm = () => {
+
+    const [alldestination, setAllDestination] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:8080/ghumdim/viewAllDestination").then((res) => {
+            console.log(res.data);
+            setAllDestination(res.data);
+        })
+            .catch((error) => {
+                console.error('error fetching data', error);
+            });
+    }, []);
 
     const [editdestinationdata, setEditDestinationData] = useState({
         name: '',
@@ -17,6 +28,8 @@ const AdminEditForm = () => {
         longitude: ''
         // multiFile: null,
     });
+
+    console.log(editdestinationdata);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
@@ -80,12 +93,13 @@ const AdminEditForm = () => {
 
     return (
         <div className='admin-edit-form'>
-            <form onSubmit={handleSubmit} className="add-destination-form">
+            <form onSubmit={handleSubmit} className="add-edit-form">
                 <label htmlFor="name">Name:</label>
                 <input
                     type="text"
                     id="name"
                     name='name'
+                    // placeholder='hello'
                     value={editdestinationdata.name}
                     onChange={handleChange}
                     required
@@ -136,6 +150,25 @@ const AdminEditForm = () => {
                     onChange={handleChange}
                 // disabled={isCurrentLocation}
                 />
+                <label htmlFor="status">Status:</label>
+                <select
+                    id="status"
+                    name='status'
+                    value={editdestinationdata.status}
+                    onChange={handleChange}
+                >
+                    <option value="pending">Pending</option>
+                    <option value="verified">Verified</option>
+                </select>
+
+                <label htmlFor="category">Category:</label>
+                <select id="category" name='category' value={editdestinationdata.category} onChange={handleChange}>
+                    <option value="RELIGIOUS">Religious</option>
+                    <option value="HIKE">Hike</option>
+                    <option value="PARKS">Parks</option>
+                    <option value="TREKKING">Trekking</option>
+                    <option value="FOOD">Food</option>
+                </select>
 
                 <button type="submit">Edit</button>
             </form>

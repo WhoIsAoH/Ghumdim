@@ -1,17 +1,16 @@
 .destinationdisplay {
     display: flex;
     padding: 50px;
-    margin: 0px 170px;
-    margin-bottom: 12rem;
+    margin: -50px 100px;
+    margin-bottom: 5rem;
     /* flex-direction: column; */
     /* height: 90vh; */
 }
 
 .destinationdisplay-left {
     display: flex;
-    gap: 17px;
+    /* gap: 17px; */
 }
-
 
 .destinationdisplay-main-img {
     object-fit: contain;
@@ -55,8 +54,6 @@
     text-decoration: underline;
 }
 
-
-
 .destinationdisplay-right button {
     padding: 6px 16px;
     width: 170px;
@@ -78,7 +75,9 @@
         display: flex;
         margin: 0px 50px;
         margin-bottom: 10rem;
-
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .destinationdisplay-main-img {
