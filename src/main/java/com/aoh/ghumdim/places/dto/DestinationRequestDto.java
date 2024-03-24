@@ -27,6 +27,7 @@ public class DestinationRequestDto {
     private Double Longitude;
     private DestinationStatus status;
     private String contactNumber;
+    @JsonIgnore
     private double rating;
 
     private String description;
