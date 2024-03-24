@@ -1,8 +1,11 @@
 package com.aoh.ghumdim.bm25;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+//@Component
 public class Tokenizer {
   public List<String> tokenize(List<String> document) {
     List<String> tokens = new ArrayList<>();

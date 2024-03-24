@@ -15,6 +15,8 @@ import com.aoh.ghumdim.shared.UserResponse;
 import com.aoh.ghumdim.shared.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +39,7 @@ public class DestinationServiceImpl implements DestinationService {
     private final UserRepository userRepository;
     private final ImageService imageService;
     private final DistanceCalculatorService distanceCalculatorService;
+//    private final BM25 bm25;
 
 
     @Override
@@ -49,6 +52,10 @@ public class DestinationServiceImpl implements DestinationService {
     public List<DestinationResponseDto> getDestinationDetailWithSortSevirity(@PathVariable String field) {
         List<Destinations> places = destinationRepository.findAll(Sort.by(Sort.Direction.ASC, field));
         return modelMapperService.entityToListDto(places);
+    }
+
+    public Page<Destinations> findDestinationWithPagination(int offset, int pageSize){
+        return   destinationRepository.findAll(PageRequest.of(offset,pageSize));
     }
 
     @Override
@@ -122,5 +129,9 @@ public class DestinationServiceImpl implements DestinationService {
         return destinationRepository.findDestinationsByCategory(category);
     }
 
+//    public List<DestinationResponseDto> bm25Search(String[] query, List<DestinationResponseDto> documents, int n){
+////        String[] queryWords = query.split("\\s+"); // Split the query into words
+//        return bm25.getTopN(query , documents, n);
+//    }
 
 }

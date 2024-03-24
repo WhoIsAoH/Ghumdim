@@ -1,12 +1,21 @@
 package com.aoh.ghumdim.bm25;
 
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 import java.util.concurrent.*;
+//@Component
+//@RequiredArgsConstructor
+//@NoArgsConstructor(force = true)
+public class BM25Okapi extends BM25 {
 
-class BM25Okapi extends BM25 {
+
   private final double k1;
   private final double b;
   private final double epsilon;
+
 
   public BM25Okapi(List<List<String>> corpus, Tokenizer tokenizer, double k1, double b, double epsilon) {
     super(corpus, tokenizer);

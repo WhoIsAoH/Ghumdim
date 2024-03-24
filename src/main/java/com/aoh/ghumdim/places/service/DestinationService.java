@@ -4,6 +4,7 @@ import com.aoh.ghumdim.places.dto.DestinationRequestDto;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 import com.aoh.ghumdim.places.entity.Destinations;
 import com.aoh.ghumdim.shared.UserResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,5 +26,9 @@ public interface DestinationService {
     List<Destinations> searchDestination(String searchKey);
 
     List<Destinations> findByCategory(String category);
+
+//    List<DestinationResponseDto> bm25Search(String[] query, List<DestinationResponseDto> documents, int n);
+
+    Page<Destinations> findDestinationWithPagination(int offset, int pageSize);
 
 }

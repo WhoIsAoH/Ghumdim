@@ -18,6 +18,7 @@ import com.aoh.ghumdim.security.service.UserService;
 import com.aoh.ghumdim.shared.MessageConstant;
 import com.aoh.ghumdim.shared.UserResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -84,6 +85,13 @@ public class AllController {
         return new ResponseEntity<>(placeResponseDto, HttpStatus.OK);
     }
 
+  @GetMapping("/viewDestinationPage/{offset}/{pageSize}")
+  public ResponseEntity<Page<Destinations>> viewDestinationWithPagination(@PathVariable int offset,@PathVariable int pageSize){
+    Page<Destinations> destinationWithPagination = destinationService.findDestinationWithPagination(offset, pageSize);
+    return new ResponseEntity<>(destinationWithPagination, HttpStatus.OK);
+  }
+
+
     @PostMapping("/updateDestination/{id}")
     public UserResponse updateDestination(@PathVariable Integer id, @RequestBody DestinationRequestDto placeRequestDto){
         destinationService.updateDestination(id, placeRequestDto);
@@ -109,6 +117,22 @@ public class AllController {
     public List<Destinations> getAllByDestination(@PathVariable String cat){
         return destinationService.findByCategory(cat);
     }
+
+
+//    @GetMapping("/bm25")
+//    public List<DestinationResponseDto> SearchBm25(@RequestParam String[] query, @RequestParam int n){
+////      ArrayList queryList = new ArrayList();
+////      queryList.add(query);
+//      return destinationService.bm25Search(query,destinationService.getDestinationDetail(), n );
+////      return null;
+//    }
+
+
+
+
+
+
+
 
     //review controller
     private final ReviewService reviewService;

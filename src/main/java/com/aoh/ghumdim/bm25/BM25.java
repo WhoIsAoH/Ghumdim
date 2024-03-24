@@ -1,8 +1,14 @@
 package com.aoh.ghumdim.bm25;
 
+import com.aoh.ghumdim.places.dto.DestinationResponseDto;
+import com.aoh.ghumdim.places.entity.Destinations;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 import java.util.concurrent.*;
 
+//@Component
 public abstract class BM25 {
   protected int corpusSize;
   protected double avgdl;
@@ -10,6 +16,7 @@ public abstract class BM25 {
   protected Map<String, Double> idf;
   protected List<Integer> docLen;
   protected Tokenizer tokenizer;
+
 
   public BM25(List<List<String>> corpus, Tokenizer tokenizer) {
     this.corpusSize = 0;
@@ -71,7 +78,7 @@ public abstract class BM25 {
     return nd;
   }
 
-  public List<String> getTopN(String[] query, List<String> documents, int n) {
+  public List<DestinationResponseDto> getTopN(String[] query, List<DestinationResponseDto> documents, int n) {
     assert corpusSize == documents.size() : "The documents given don't match the index corpus!";
     double[] scores = getScores(query);
     List<Integer> topN = new ArrayList<>();
@@ -79,10 +86,11 @@ public abstract class BM25 {
       topN.add(i);
     }
     Collections.sort(topN, (a, b) -> Double.compare(scores[b], scores[a]));
-    List<String> topResults = new ArrayList<>();
+    List<DestinationResponseDto> topResults = new ArrayList<>();
     for (int i = 0; i < Math.min(n, topN.size()); i++) {
       topResults.add(documents.get(topN.get(i)));
     }
     return topResults;
   }
+
 }
