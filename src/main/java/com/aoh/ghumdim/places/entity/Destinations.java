@@ -34,7 +34,7 @@ public class Destinations {
 
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User author;
 
 }
