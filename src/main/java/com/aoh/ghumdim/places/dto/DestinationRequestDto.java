@@ -33,7 +33,7 @@ public class DestinationRequestDto {
     private String description;
 //    private MultipartFile multiFile;
 
-@JsonIgnore
+//@JsonIgnore
     @JsonAlias("author_id")
     private Integer author;
 }
