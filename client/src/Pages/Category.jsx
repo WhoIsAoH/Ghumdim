@@ -32,7 +32,6 @@ const Category = (props) => {
       <div className="destinationcategory-places">
 
         {alldestination.map((item, i) => {
-          // console.log(alldestination + "address");
 
           if (props.category.toLowerCase() === item.category.toLowerCase()) {
 
@@ -43,18 +42,9 @@ const Category = (props) => {
           }
         })}
 
-        {/* {all_destination.map((item, i) => {
-          if (props.category === item.category) {
-            return <Item key={i} id={item.id} name={item.name} image={item.image} address={item.address} />
-          }
-          else {
-            return null;
-          }
-        })} */}
+
       </div>
-      {/* <div className="destinationcategory-loadmore">
-        Explore More
-      </div> */}
+
     </div>
   )
 }

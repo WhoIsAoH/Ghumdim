@@ -14,8 +14,9 @@ const Hero = () => {
                 {/* <h2>Your Travel Companion</h2> */}
                 <p>Travel, enjoy <br />and live a new<br /> and full life.</p>
                 <Link to='add-destination' className='add-des'><button className='add-des-button'  >Add Destinations</button></Link>
-                {/* <Link to='admindestinationdisplay' className='add-des'><button className='add-des-button'  >Edit</button></Link> */}
-                <Link to='admin' className='add-des'><button className='add-des-button'  >Admin</button></Link>
+                <Link to='admin' ><button className='add-des-button'  >Admin</button></Link>
+                <Link to='userprofile' ><button className='add-des-button'  >userprofile</button></Link>
+
             </div>
             <div className="hero-right">
                 {/* <img src={hero_right} alt="" /> */}

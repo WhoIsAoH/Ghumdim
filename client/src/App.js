@@ -10,6 +10,7 @@ import Favourites from './Pages/Favourites';
 import AddDes from './Pages/AddDes';
 import Admin from './Components/Admin/Admin';
 import AdminDestinationDisplay from './Components/AdminDestinationDisplay/AdminDestinationDisplay';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/add-destination' element={<AddDes />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />
+          <Route path='/userprofile' element={<UserProfile />} />
 
           <Route path="/destination" element={<Destination />}>
             {/* <Route path='/destination/:id' element={<Destination />} /> */}

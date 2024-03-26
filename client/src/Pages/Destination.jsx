@@ -9,17 +9,34 @@ import RelatedDestination from '../Components/RelatedDestination/RelatedDestinat
 
 const Destination = () => {
 
-  const { all_destination } = useContext(DestinationContext);
+  const { alldestination } = useContext(DestinationContext);
   const { destinationId } = useParams();
-  const destination = all_destination.find((e) => e.id === Number(destinationId));
+  const destination = alldestination.find((e) => e.id === Number(destinationId));
+  //   return (
+  //     < div >
+  //       <Breadcrum destination={destination} />
+  //       <DestinationDisplay destination={destination} />
+  //       <DescriptionBox />
+  //       <RelatedDestination />
+  //     </div >
+  //   );
+  // }
+
+  // export default Destination
+
   return (
-    < div >
-      <Breadcrum destination={destination} />
-      <DestinationDisplay destination={destination} />
-      {/* <DescriptionBox /> */}
-      <RelatedDestination />
-    </div >
+    <div>
+      {/* Check if destination is not null before passing it to components */}
+      {destination && (
+        <>
+          <Breadcrum destination={destination} />
+          <DestinationDisplay destination={destination} />
+          <DescriptionBox />
+          <RelatedDestination />
+        </>
+      )}
+    </div>
   );
 }
 
-export default Destination
+export default Destination;

@@ -21,7 +21,7 @@ const DestinationDisplay = (props) => {
                     console.error('error fetching data', error);
                 });
         }
-    }, []);
+    }, [destinationId]);
 
     // const { destination } = props;
     const { addToFavourite } = useContext(DestinationContext);
