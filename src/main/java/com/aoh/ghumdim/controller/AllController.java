@@ -7,6 +7,7 @@ import com.aoh.ghumdim.places.entity.Destinations;
 import com.aoh.ghumdim.places.service.ImageService;
 import com.aoh.ghumdim.places.service.DestinationService;
 import com.aoh.ghumdim.review.dto.ReviewDto;
+import com.aoh.ghumdim.review.dto.ReviewResponseDto;
 import com.aoh.ghumdim.review.entity.Review;
 import com.aoh.ghumdim.review.service.ReviewService;
 import com.aoh.ghumdim.security.dto.AuthenticationRequestDto;
@@ -147,6 +148,11 @@ public class AllController {
 
     public List<Review> getAllReview(){
         return reviewService.getAllReview();
+    }
+
+    @GetMapping("/getReview/{id}")
+    public List<ReviewResponseDto> getIdReview(@PathVariable Integer id){
+      return reviewService.getReviewById(id);
     }
 
 
