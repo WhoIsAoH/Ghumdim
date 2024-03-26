@@ -6,7 +6,7 @@ import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 import loginimg from '../Assets/loginimg.png';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 
 const LoginSignup = () => {
@@ -57,8 +57,8 @@ const LoginSignup = () => {
                 });
                 console.log('login successful');
             }
-            // Redirect to home page after successful login
-            history.push('/home');
+            // // Redirect to home page after successful login
+            // history.push('/home');
             // Handle successful response
         } catch (error) {
             console.error('Error:', error.response.data);
