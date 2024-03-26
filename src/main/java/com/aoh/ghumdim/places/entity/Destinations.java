@@ -31,8 +31,10 @@ public class Destinations {
     private String contactNumber;
     private String photo;
     private double rating;
-
+    @Lob
     private String description;
+
+
 
     @ManyToOne
     private User author;
