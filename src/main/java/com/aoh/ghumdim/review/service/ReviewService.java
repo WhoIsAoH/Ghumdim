@@ -1,4 +1,4 @@
-package com.aoh.ghumdim.review.service.impl;
+package com.aoh.ghumdim.review.service;
 
 import com.aoh.ghumdim.review.dto.ReviewDto;
 import com.aoh.ghumdim.review.entity.Review;

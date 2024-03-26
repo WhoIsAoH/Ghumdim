@@ -8,7 +8,7 @@ import com.aoh.ghumdim.places.service.ImageService;
 import com.aoh.ghumdim.places.service.DestinationService;
 import com.aoh.ghumdim.review.dto.ReviewDto;
 import com.aoh.ghumdim.review.entity.Review;
-import com.aoh.ghumdim.review.service.impl.ReviewService;
+import com.aoh.ghumdim.review.service.ReviewService;
 import com.aoh.ghumdim.security.dto.AuthenticationRequestDto;
 import com.aoh.ghumdim.security.dto.AuthenticationResponseDto;
 import com.aoh.ghumdim.security.dto.RegisterRequestDto;
