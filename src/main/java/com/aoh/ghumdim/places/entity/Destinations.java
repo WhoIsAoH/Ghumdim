@@ -32,6 +32,7 @@ public class Destinations {
     private String photo;
     private double rating;
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
 
