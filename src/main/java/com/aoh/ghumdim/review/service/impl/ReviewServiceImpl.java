@@ -1,5 +1,6 @@
 package com.aoh.ghumdim.review.service.impl;
 
+import com.aoh.ghumdim.places.entity.Destinations;
 import com.aoh.ghumdim.places.repo.DestinationRepository;
 import com.aoh.ghumdim.review.dto.ReviewDto;
 import com.aoh.ghumdim.review.dto.ReviewResponseDto;
@@ -23,12 +24,19 @@ public class ReviewServiceImpl implements ReviewService {
     private final DestinationRepository destinationRepository;
     private final UserRepository userRepository;
 
+
     public UserResponse createReview(ReviewDto reviewDto){
+        Destinations destination = destinationRepository.findById(reviewDto.getDestination()).orElseThrow(UserNotFoundException::new);
+        destination.setRating(((destination.getRating()+reviewDto.getRating())/2));
+
         Review review = new Review();
         review.setReviewDetail(reviewDto.getReviewDetail());
         review.setUser(userRepository.findById(reviewDto.getUser()).orElseThrow(UserNotFoundException::new));
-        review.setDestinations(destinationRepository.findById(reviewDto.getDestination()).orElseThrow(UserNotFoundException::new));
+        review.setDestinations(destination);
+
         reviewRepository.save(review);
+        destinationRepository.save(destination);
+
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }
 

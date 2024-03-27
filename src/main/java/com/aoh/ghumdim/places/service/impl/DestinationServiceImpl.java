@@ -78,6 +78,8 @@ public class DestinationServiceImpl implements DestinationService {
 
     }
 
+
+
     @Override
     public DestinationResponseDto getDestinationById(Integer id) {
         Destinations places = destinationRepository.findById(id)
