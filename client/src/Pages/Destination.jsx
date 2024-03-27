@@ -12,18 +12,6 @@ const Destination = () => {
   const { alldestination } = useContext(DestinationContext);
   const { destinationId } = useParams();
   const destination = alldestination.find((e) => e.id === Number(destinationId));
-  //   return (
-  //     < div >
-  //       <Breadcrum destination={destination} />
-  //       <DestinationDisplay destination={destination} />
-  //       <DescriptionBox />
-  //       <RelatedDestination />
-  //     </div >
-  //   );
-  // }
-
-  // export default Destination
-
   return (
     <div>
       {/* Check if destination is not null before passing it to components */}
