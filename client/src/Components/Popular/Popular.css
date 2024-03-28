@@ -21,6 +21,31 @@
     background: #252525;
 }
 
+.popular .showmore-btn {
+    display: flex;
+    /* justify-content: start; */
+    align-items: center;
+    align-self: flex-start;
+    padding: 0px 16px;
+    margin: 0 0 0 30px;
+    width: 80px;
+    height: 2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 20px;
+    background: #FF4141;
+    /* margin-top: 1rem; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.popular .showmore-btn a {
+    text-decoration: none;
+    color: white;
+}
+
 .popular-destination {
     margin-top: 50px;
     display: flex;

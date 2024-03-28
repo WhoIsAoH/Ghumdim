@@ -11,6 +11,7 @@ import AddDes from './Pages/AddDes';
 import Admin from './Components/Admin/Admin';
 import AdminDestinationDisplay from './Components/AdminDestinationDisplay/AdminDestinationDisplay';
 import UserProfile from './Components/UserProfile/UserProfile';
+import NearPlacesAll from './Components/NearPlacesAll/NearPlacesAll';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
 
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/login' element={<LoginSignup />} />
+          <Route path='nearbyplaces' element={<NearPlacesAll />} />
 
         </Routes>
 

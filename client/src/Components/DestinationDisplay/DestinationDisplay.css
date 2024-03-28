@@ -1,7 +1,7 @@
 .destinationdisplay {
     display: flex;
     padding: 50px;
-    margin: -50px 100px;
+    margin: 0px 100px;
     margin-bottom: 5rem;
     /* flex-direction: column; */
     /* height: 90vh; */
@@ -9,7 +9,7 @@
 
 .destinationdisplay-left {
     display: flex;
-    /* gap: 17px; */
+
 }
 
 .destinationdisplay-main-img {

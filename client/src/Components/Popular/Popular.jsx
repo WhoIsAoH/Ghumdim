@@ -1,59 +1,48 @@
-import React, { useEffect } from 'react'
-import './Popular.css'
-import popular_destination from '../Assets/populardestination'
-import Item from '../Items/Item'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import './Popular.css';
+import Item from '../Items/Item';
 import Axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 const Popular = () => {
-  const { destinationId } = useParams();
+  const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
-  // const [isCurrentLocation, setIsCurrentLocation] = useState(false); // New state for checkbox
+  useEffect(() => {
+    const fetchNearbyPlaces = async () => {
+      try {
+        const userLatitude = 0;
+        const userLongitude = 0;
+        const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestinationsSortedByDistance?userLatitude=${userLatitude}&userLongitude=${userLongitude}`);
+        // Slice the response data to get only the first four items
+        const firstFourPlaces = response.data.slice(0, 4);
+        setNearbyPlaces(firstFourPlaces);
+      } catch (error) {
+        console.error('Error fetching nearby places:', error);
+      }
+    };
 
-  // useEffect(() => {
-  //   if (isCurrentLocation && "geolocation" in navigator) {
-  //     navigator.geolocation.getCurrentPosition(function (position) {
-  //       setDestinationData({
-  //         ...destinationdata,
-  //         latitude: position.coords.latitude,
-  //         longitude: position.coords.longitude
-  //       });
-
-  //     });
-  //   } else {
-  //     setDestinationData({
-  //       ...destinationdata,
-  //       latitude: '',
-  //       longitude: ''
-  //     })
-
-  //   }
-  // }, [isCurrentLocation]);
-
-  // useEffect(() => {
-  //   if (destinationId) {
-  //     Axios.get(`http://localhost:8080/ghumdim/viewDestinationsSortedByDistance?userLatitude=0&userLongitude=0`).then((res) => {
-  //       console.log(res.data,);
-  //       setAllDestination(res.data);
-  //     })
-  //       .catch((error) => {
-  //         console.error('error fetching data', error);
-  //       });
-  //   }
-  // }, []);
+    fetchNearbyPlaces();
+  }, []);
 
   return (
     <div className='popular'>
       <h1>Places Near You</h1>
       <hr />
+      <p className='showmore-btn'><Link to="/nearbyplaces">Show More</Link> {/* Use Link to navigate to NearPlacesAll */}</p>
       <div className='popular-destination'>
-        {popular_destination.map((item, i) => {
-          return <Item key={i} id={item.id} name={item.name} image={item.image} address={item.address} status={item.status} />
-        })}
+        {nearbyPlaces.map((place, index) => (
+          <Item
+            key={index}
+            id={place.id}
+            name={place.name}
+            photo={place.photo}
+            address={place.address}
+            status={place.status}
+          />
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Popular
+export default Popular;
