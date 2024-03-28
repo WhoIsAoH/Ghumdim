@@ -8,11 +8,11 @@ const AddDestinationForm = () => {
         address: '',
         category: '',
         latitude: '',
-        status: '',
+        status: 'PENDING', // Set status as PENDING by default
         contactNumber: '',
         rating: 1,
         description: '',
-        author: 1, // Assuming you need to set the author field
+        author: 1,
         longitude: ''
         // multiFile: null,
     });
@@ -46,7 +46,7 @@ const AddDestinationForm = () => {
         const newValue = type === 'file' ? files[0] : value;
 
         setDestinationData({ ...destinationdata, [name]: newValue });
-        console.log('formDta', destinationdata);
+        console.log('formData', destinationdata);
     };
 
 
@@ -58,40 +58,52 @@ const AddDestinationForm = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8080/ghumdim/createDestination', {
-                // destinationdata.name,
-                // destinationdata.address,
-                // destinationdata.category,
-                // destinationdata.latitude,
-                // destinationdata.status,
-                // destinationdata.contactNumber,
-                // destinationdata.rating,
-                // destinationdata.description,
-                // destinationdata.author, // Assuming you need to set the author field
-                // destinationdata.longitude,
-                // destinationdata.multiFile,
-            },
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
+            
+            const formData = new FormData();
+           
+            Object.keys(destinationdata).forEach(item=> {
+                
+                formData.append(item, destinationdata[item])
+            })
+
+            // formData.append('placeRequestDto', JSON.stringify(destinationdata));
+            formData.append('multipartFile', multiFile);
+            
 
 
-                    }
-                    // body: formData
-                });
+            // console.log("this is test", formData);
+            for (var pair of formData.entries()) {
+                if (pair[1] instanceof File) {
+                    console.log(pair[0] + ' is a File.');
+                    console.log('File name: ' + pair[1].name);
+                    console.log('File size: ' + pair[1].size + ' bytes');
+                    console.log('File type: ' + pair[1].type);
+                } else {
+                    console.log(pair[0] + ' is not a File.');
+                }
+            }
+
+            const response = await fetch('http://127.0.0.1:8080/ghumdim/createDestination' ,{
+                method: "POST",
+                body: formData,
+                // headers: {
+                //     'Content-Type': 'multipart/form-data',
+                // }
+            });
+
             console.log(response.data);
             setDestinationData({
                 name: '',
                 address: '',
                 category: '',
                 latitude: '',
-                status: '',
+                status: 'PENDING', // Reset status field to PENDING
                 contactNumber: '',
                 rating: 1,
                 description: '',
-                author: 1, // Assuming you need to set the author field
+                author: 1,
                 longitude: '',
-                multiFile: null,
+                // multiFile: null,
             })
         } catch (error) {
             console.error(error);
@@ -102,6 +114,8 @@ const AddDestinationForm = () => {
     };
 
 
+    console.log("testing multipart");
+    console.log(multiFile);
 
     return (
         <div className="add-des-container">
@@ -144,16 +158,26 @@ const AddDestinationForm = () => {
                     onChange={handleChange}
                 />
 
+                <label htmlFor="status">Status:</label>
+                <input
+                    type="text"
+                    id="status"
+                    name='status'
+                    value={destinationdata.status}
+                    onChange={handleChange}
+                    disabled
+                />
+
                 <label htmlFor="image">Upload Image:</label>
                 <input
                     type="file"
                     id="image"
                     name='multiFile'
-                    value={destinationdata.multiFile}
-                    // onChange={handleChange}
+                    // value={destinationdata.multiFile}
                     onChange={(e) => setMultiFile(e.target.files[0])} // Store selected file
                     required
                 />
+                {multiFile && <img src ={URL.createObjectURL(multiFile)}  ></img>}
 
                 <label htmlFor="rating">Ratings:</label>
                 <select id="rating" name='rating' value={destinationdata.rating} onChange={handleChange}>
@@ -200,8 +224,6 @@ const AddDestinationForm = () => {
                     onChange={handleChange}
                     disabled={isCurrentLocation}
                 />
-
-
 
                 <button type="submit">Submit</button>
             </form>
