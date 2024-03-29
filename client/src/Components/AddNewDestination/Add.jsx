@@ -62,7 +62,6 @@ const AddDestinationForm = () => {
             const formData = new FormData();
            
             Object.keys(destinationdata).forEach(item=> {
-                
                 formData.append(item, destinationdata[item])
             })
 
