@@ -5,11 +5,14 @@ import star_dull_icon from "../Assets/star_dull_icon.png"
 import { DestinationContext } from '../../Context/DestinationContext'
 import Axios, { all } from 'axios'
 import './AdminDestinationDisplay.css'
+import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa";
 
 import AdminEditForm from '../EditForm/AdminEditForm'
 
 const AdminDestinationDisplay = (props) => {
     const { destinationId } = useParams();
+    const [rating, setRating] = useState(0); // State to store the rating
+
 
     // console.log(destinationId);
 
@@ -27,12 +30,30 @@ const AdminDestinationDisplay = (props) => {
             Axios.get(`http://localhost:8080/ghumdim/viewDestination/${destinationId}`).then((res) => {
                 console.log(res.data,);
                 setAllDestination(res.data);
+                setRating(res.data.rating); // Set the rating obtained from the API response
+
             })
                 .catch((error) => {
                     console.error('error fetching data', error);
                 });
         }
     }, []);
+
+    // Function to render star icons based on rating
+    const renderStars = () => {
+        const stars = [];
+        const roundedRating = Math.round(rating * 2) / 2; // Round the rating to the nearest half
+        for (let i = 0; i < 5; i++) {
+            if (i < roundedRating - 0.5) {
+                stars.push(<FaStar style={{ color: '#FF4141' }} size={20} key={i} />);
+            } else if (i === Math.floor(roundedRating) && roundedRating % 1 !== 0) {
+                stars.push(<FaStarHalfAlt style={{ color: '#FF4141' }} size={20} key={i} />);
+            } else {
+                stars.push(<FaRegStar style={{ color: '#FF4141' }} size={20} key={i} />);
+            }
+        }
+        return stars;
+    };
 
     // const { destination } = props;
     const { addToFavourite } = useContext(DestinationContext);
@@ -50,12 +71,7 @@ const AdminDestinationDisplay = (props) => {
             <div className="destinationdisplay-right">
                 <h1>{alldestination?.name}</h1>
                 <div className='destinationdisplay-right-star'>
-                    <img src={star_icon} alt="" />
-                    <img src={star_icon} alt="" />
-                    <img src={star_icon} alt="" />
-                    <img src={star_icon} alt="" />
-                    <img src={star_dull_icon} alt="" />
-                    {/* <p>(122)</p> */}
+                    {renderStars()} {/* Render star icons dynamically */}
                 </div>
                 <div className='destinationdisplay-right-description'>
                     <h4>Description</h4>

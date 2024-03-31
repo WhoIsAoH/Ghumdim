@@ -30,7 +30,7 @@ function App() {
           <Route path='/add-destination' element={<AddDes />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />
-          <Route path='/userprofile' element={<UserProfile />} />
+          <Route path='/userprofile/:userId' element={<UserProfile />} />
 
           <Route path="/destination" element={<Destination />}>
             {/* <Route path='/destination/:id' element={<Destination />} /> */}
