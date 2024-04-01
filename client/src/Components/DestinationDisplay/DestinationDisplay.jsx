@@ -64,9 +64,11 @@ const DestinationDisplay = () => {
                     <p>Latitude: {alldestination?.latitude}</p>
                     <p>Longitude: {alldestination?.longitude}</p>
                 </div>
+                <a href={`https://www.google.com/maps/place/${alldestination?.latitude},${alldestination?.longitude}`} target='_blank'>Goto</a>
+
                 <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button>
             </div>
-        </div>
+        </div >
     );
 };
 

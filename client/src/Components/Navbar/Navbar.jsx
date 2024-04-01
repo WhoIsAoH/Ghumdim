@@ -20,7 +20,7 @@ const Navbar = () => {
     // Function to fetch search results
     const fetchSearchResults = async () => {
       try {
-        const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestination/search/${searchQuery}`);
+        const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestination/cosearch/${searchQuery}`);
         setSearchResults(response.data);
       } catch (error) {
         console.error('Error fetching search results:', error);

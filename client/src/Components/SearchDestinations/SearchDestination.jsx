@@ -1,80 +1,73 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { DestinationContext } from '../../Context/DestinationContext';
 import Axios from 'axios';
-import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa";
+// import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa";
+import dropdown_icon from '../Assets/dropdown_icon.png'
+import Item from '../Items/Item'
 
-const SearchDestination = () => {
-    const { destinationId } = useParams();
+const SearchDestination = (props) => {
+
     const [alldestination, setAllDestination] = useState({});
+    const [searchQuery, setSearchQuery] = useState("");
     const [rating, setRating] = useState(0); // State to store the rating
+    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        if (destinationId) {
-            Axios.get(`http://localhost:8080/ghumdim/viewDestination/${destinationId}`).then((res) => {
-                console.log(res.data);
-                setAllDestination(res.data);
-                setRating(res.data.rating); // Set the rating obtained from the API response
-            })
-                .catch((error) => {
-                    console.error('error fetching data', error);
-                });
-        }
-    }, [destinationId]);
+        // Function to fetch search results
+        const fetchSearchResults = async () => {
+            try {
+                const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestination/cosearch/${searchQuery}`);
+                setSearchResults(response.data);
+            } catch (error) {
+                console.error('Error fetching search results:', error);
+            }
+        };
 
-    const { addToFavourite } = useContext(DestinationContext);
+        // Fetch search results only if there's a search query
+        if (searchQuery.trim() !== "") {
+            fetchSearchResults();
+        } else {
+            setSearchResults([]);
+        }
+    }, [searchQuery]);
+
+    // const { addToFavourite } = useContext(DestinationContext);
 
     // Function to render star icons based on rating
-    const renderStars = () => {
-        const stars = [];
-        const roundedRating = Math.round(rating * 2) / 2; // Round the rating to the nearest half
-        for (let i = 0; i < 5; i++) {
-            if (i < roundedRating - 0.5) {
-                stars.push(<FaStar style={{ color: '#FF4141' }} size={20} key={i} />);
-            } else if (i === Math.floor(roundedRating) && roundedRating % 1 !== 0) {
-                stars.push(<FaStarHalfAlt style={{ color: '#FF4141' }} size={20} key={i} />);
-            } else {
-                stars.push(<FaRegStar style={{ color: '#FF4141' }} size={20} key={i} />);
-            }
-        }
-        return stars;
-    };
+    // const renderStars = () => {
+    //     const stars = [];
+    //     const roundedRating = Math.round(rating * 2) / 2; // Round the rating to the nearest half
+    //     for (let i = 0; i < 5; i++) {
+    //         if (i < roundedRating - 0.5) {
+    //             stars.push(<FaStar style={{ color: '#FF4141' }} size={20} key={i} />);
+    //         } else if (i === Math.floor(roundedRating) && roundedRating % 1 !== 0) {
+    //             stars.push(<FaStarHalfAlt style={{ color: '#FF4141' }} size={20} key={i} />);
+    //         } else {
+    //             stars.push(<FaRegStar style={{ color: '#FF4141' }} size={20} key={i} />);
+    //         }
+    //     }
+    //     return stars;
+    // };
 
     return (
-        <div className='destinationdisplay'>
-            <div className="destinationdisplay-left">
-                <div className="destinationdisplay-img">
-                    <img className='destinationdisplay-main-img' src={`https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/${alldestination?.photo}?alt=media`} alt="" />
+        <div className='destination-category'>
+            {/* <div className='destiantioncategory-indexSort'>
+                <p>
+                    <span>Showing 1-12</span> out of 36 destinations
+                </p>
+                <div className="destinationcategory-sort">
+                    Sort by <img src={dropdown_icon} alt="" />
                 </div>
+            </div> */}
+            <div className="destinationcategory-places">
+
+                {searchResults.map((item, i) => {
+                    return <Item key={i} id={item.id} name={item.name} photo={item.photo} address={item.address} status={item.status} />
+                })}
+
+
             </div>
-            <div className="destinationdisplay-right">
-                <h1>{alldestination?.name}</h1>
-                <div className='destinationdisplay-right-star'>
-                    {renderStars()} {/* Render star icons dynamically */}
-                </div>
-                <div className='destinationdisplay-right-description'>
-                    <h4>Description</h4>
-                    <p>{alldestination?.description}</p>
-                </div>
-                <div className='destinationdisplay-right-location'>
-                    <p>Location: {alldestination?.address}</p>
-                    <p>Latitude: {alldestination?.latitude}</p>
-                    <p>Longitude: {alldestination?.longitude}</p>
-                </div>
-                <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button>
-            </div>
+
         </div>
     );
-};
-
+}
 export default SearchDestination;
-
-
-{/* <div className="search-results">
-        {searchResults.map((result) => (
-          <div key={result.id}>
-            <p>{result.name}</p>
-          </div>
-        ))}
-      </div> */}
-
