@@ -105,6 +105,7 @@ public class DestinationServiceImpl implements DestinationService {
         destination.setLongitude(updatedDestination.getLongitude());
         destination.setContactNumber(updatedDestination.getContactNumber());
         destination.setDescription(updatedDestination.getDescription());
+        destination.setStatus(updatedDestination.getStatus());
         destinationRepository.save(destination);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
     }
