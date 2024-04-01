@@ -1,6 +1,4 @@
-package com.aoh.ghumdim.bm25;
-
-import org.springframework.stereotype.Component;
+package com.aoh.ghumdim.cosineSim;
 
 import java.util.ArrayList;
 import java.util.List;

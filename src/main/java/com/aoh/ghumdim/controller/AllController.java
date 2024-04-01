@@ -1,6 +1,7 @@
 package com.aoh.ghumdim.controller;
 
 import com.aoh.ghumdim.adminReview.service.AdminReviewService;
+import com.aoh.ghumdim.cosineSim.TestCosine;
 import com.aoh.ghumdim.places.dto.DestinationRequestDto;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 import com.aoh.ghumdim.places.entity.Destinations;
@@ -21,6 +22,7 @@ import com.aoh.ghumdim.shared.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -72,9 +74,9 @@ public class AllController {
         return destinationService.getDestinationDetail();
     }
 
-    @PostMapping("/createDestination")
-    public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile multipartFile){
-        return destinationService.createDestination(placeRequestDto, multipartFile);
+    @PostMapping(value = {"/createDestination"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile[] multipartFile){
+        return destinationService.createDestination(placeRequestDto, multipartFile[0]);
     }
     @PostMapping("/addDestinationPhoto")
     public String addDestinationPhoto(@RequestPart("file") MultipartFile multipartFile){
@@ -93,7 +95,7 @@ public class AllController {
   }
 
 
-    @PostMapping("/updateDestination/{id}")
+    @PostMapping(value = "/updateDestination/{id}")
     public UserResponse updateDestination(@PathVariable Integer id, @RequestBody DestinationRequestDto placeRequestDto){
         destinationService.updateDestination(id, placeRequestDto);
         return new UserResponse(MessageConstant.SAVED_SUCCESSFULLY);
@@ -119,6 +121,12 @@ public class AllController {
     public List<Destinations> getAllByDestination(@PathVariable String cat){
         return destinationService.findByCategory(cat);
     }
+
+    private final TestCosine testCosine;
+  @GetMapping("/viewDestination/cosearch/{key}")
+  public List<Destinations> searchDestinationCosine(@PathVariable String key){
+    return testCosine.getDestinationsByCosineSimilarity(key);
+  }
 
 
 //    @GetMapping("/bm25")

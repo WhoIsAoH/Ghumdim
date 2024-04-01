@@ -1,11 +1,9 @@
-package com.aoh.ghumdim.bm25;
+package com.aoh.ghumdim.cosineSim.trash;
 
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import com.aoh.ghumdim.cosineSim.Tokenizer;
 
 import java.util.*;
-import java.util.concurrent.*;
+
 //@Component
 //@RequiredArgsConstructor
 //@NoArgsConstructor(force = true)

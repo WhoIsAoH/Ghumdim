@@ -1,9 +1,7 @@
-package com.aoh.ghumdim.bm25;
+package com.aoh.ghumdim.cosineSim.trash;
 
+import com.aoh.ghumdim.cosineSim.Tokenizer;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
-import com.aoh.ghumdim.places.entity.Destinations;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.*;

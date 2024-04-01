@@ -1,4 +1,4 @@
-package com.aoh.ghumdim.bm25;
+package com.aoh.ghumdim.cosineSim;
 
 import org.springframework.stereotype.Component;
 
@@ -8,20 +8,19 @@ import java.util.List;
 public class CosineSimilarityService {
 
   public double cosineSimilarity(List<Double> vectorA, List<Double> vectorB) {
-    // Compute dot product
     double dotProduct = dotProduct(vectorA, vectorB);
 
-    // Compute magnitude of vector A
+    // magnitude A
     double magnitudeA = magnitude(vectorA);
 
-    // Compute magnitude of vector B
+    //magnitude B
     double magnitudeB = magnitude(vectorB);
 
-    // Compute cosine similarity
+    // cosine similarity
     if (magnitudeA != 0 && magnitudeB != 0) {
       return dotProduct / (magnitudeA * magnitudeB);
     } else {
-      return 0.0; // Handle division by zero
+      return 0.0;
     }
   }
 
