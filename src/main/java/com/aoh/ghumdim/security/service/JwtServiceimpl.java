@@ -44,7 +44,7 @@ public class JwtServiceimpl implements JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetail.getUsername())
                 .claim("roles",userDetail.getRole())
-                .claim("firstName",userDetail.getFirstName())
+                .claim("firstName",userDetail.getFirstNameForJwt())
 //                .setClaim(userDetail.getRole())
 //                .content("Role",userDetail.getRole())
                 .setIssuedAt(new Date(System.currentTimeMillis()))

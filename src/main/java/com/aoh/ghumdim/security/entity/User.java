@@ -69,7 +69,7 @@ public class User implements UserDetail{
         return role.name();
     }
     @Override
-    public String getFirstName(){
+    public String getFirstNameForJwt(){
         return firstname;
     }
 }
