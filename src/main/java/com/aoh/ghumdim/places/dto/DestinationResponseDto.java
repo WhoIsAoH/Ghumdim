@@ -12,9 +12,8 @@ import java.util.List;
 @Setter
 //@JsonIgnoreProperties
 public class DestinationResponseDto {
-    @JsonIgnore
-    private Integer id;
 
+    private Integer id;
 
 //    @JsonIgnore
 //    private User author;

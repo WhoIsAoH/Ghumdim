@@ -28,7 +28,7 @@ public class DestinationRequestDto {
     private DestinationStatus status;
     private String contactNumber;
 
-//    private double rating;
+    private double rating;
 
     private String description;
     @JsonAlias("author_id")

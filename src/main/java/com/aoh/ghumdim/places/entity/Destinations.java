@@ -35,8 +35,6 @@ public class Destinations {
     @Column(columnDefinition = "LONGTEXT")
     private String description;
 
-
-
     @ManyToOne
     private User author;
 
