@@ -33,7 +33,14 @@ const AdminEditForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setEditDestinationData({ ...editdestinationdata, [name]: value });
+
     };
+
+    // const handleChangeone = (e) => {
+    //     const { name, value } = e.target;
+    //     setEditDestinationData({ ...editdestinationdata, [name]: value });
+
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,6 +51,7 @@ const AdminEditForm = () => {
                 }
             });
             console.log(response.data);
+            console.log(editdestinationdata.status);
             // Clear form fields after successful submission
             setEditDestinationData({
                 name: '',
@@ -119,8 +127,10 @@ const AdminEditForm = () => {
                     value={editdestinationdata.status}
                     onChange={handleChange}
                 >
-                    <option value="pending">Pending</option>
-                    <option value="verified">Verified</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="VERIFIED">VERIFIED</option>
+                    <option value="DUPLICATE">DUPLICATE</option>
+                    <option value="REJECTED">REJECTED</option>
                 </select>
 
                 <label htmlFor="category">Category:</label>
@@ -137,6 +147,7 @@ const AdminEditForm = () => {
                 </select>
 
                 <button type="submit">Edit</button>
+
             </form>
         </div>
     );
