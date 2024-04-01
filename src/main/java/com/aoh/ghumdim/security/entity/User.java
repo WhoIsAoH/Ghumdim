@@ -72,4 +72,9 @@ public class User implements UserDetail{
     public String getFirstNameForJwt(){
         return firstname;
     }
+
+    @Override
+    public Integer getUserIdForJwt(){
+        return id;
+    }
 }

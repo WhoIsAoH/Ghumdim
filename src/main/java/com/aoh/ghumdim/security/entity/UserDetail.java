@@ -8,6 +8,7 @@ public interface UserDetail extends UserDetails  {
 
     String getRole();
     String getFirstNameForJwt();
+    Integer getUserIdForJwt();
 
 
 }

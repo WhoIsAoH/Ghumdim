@@ -43,6 +43,7 @@ public class JwtServiceimpl implements JwtService {
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetail.getUsername())
+                .claim("userId",userDetail.getUserIdForJwt())
                 .claim("roles",userDetail.getRole())
                 .claim("firstName",userDetail.getFirstNameForJwt())
 //                .setClaim(userDetail.getRole())
