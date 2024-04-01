@@ -101,6 +101,7 @@ public class AllController {
    @DeleteMapping("/deleteDestination/{id}")
    public UserResponse deleteDestination(@PathVariable Integer id){
        return destinationService.deleteDestination(id);
+//     return destinationService.put
    }
 
     @GetMapping("/viewDestinationsSortedByDistance")

@@ -2,6 +2,7 @@ package com.aoh.ghumdim.places.dto;
 
 import com.aoh.ghumdim.shared.Category;
 import com.aoh.ghumdim.shared.DestinationStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Setter
 //@JsonIgnoreProperties
 public class DestinationResponseDto {
+    @JsonIgnore
     private Integer id;
 
 

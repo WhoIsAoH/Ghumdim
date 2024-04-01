@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -24,6 +25,9 @@ public class ModelMapperService {
     }
 
     public DestinationResponseDto changeFormToCRFRequestDto(Destinations places){
+        if(places.getStatus().equals("REJECTED")){
+            return null;
+        }
         DestinationResponseDto placeResponseDto = this.modelMapper.map(places, DestinationResponseDto.class);
 //        placeResponseDto.setAuthorId(places.getAuthor().getId());
 //        log.info(String.valueOf(placeResponseDto.getAuthorId()));
@@ -31,6 +35,6 @@ public class ModelMapperService {
     }
 
     public List<DestinationResponseDto> entityToListDto(List<Destinations> places){
-        return places.stream().map(this:: changeFormToCRFRequestDto).collect(Collectors.toList());
+        return places.stream().map(this:: changeFormToCRFRequestDto).filter(Objects::nonNull).collect(Collectors.toList());
     }
 }
