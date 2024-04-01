@@ -28,15 +28,15 @@ public class ApplicationConfig {
 
     //get user id to map
 //    @Bean
-    public Integer findUserId(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        log.info();
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW1AZC5kIiwidGVzdCI6InJpbWVzaCBkYWkiLCJpYXQiOjE3MDk4MzEwMjQsImV4cCI6MTcwOTgzNDAyNH0.TLeeOidYi0EJcZtiCNUq_LY6RKlAmU33dDeAbgPxQHY";
-        Optional<User> user = repository.findByEmail(jwtService.extractUsername(token));
-        log.info("app conf");
-        log.info(jwtService.extractUsername(token));
-        return user.get().getId();
-    }
+//    public Integer findUserId(){
+////        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+////        log.info();
+//        String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaW1AZC5kIiwidGVzdCI6InJpbWVzaCBkYWkiLCJpYXQiOjE3MDk4MzEwMjQsImV4cCI6MTcwOTgzNDAyNH0.TLeeOidYi0EJcZtiCNUq_LY6RKlAmU33dDeAbgPxQHY";
+//        Optional<User> user = repository.findByEmail(jwtService.extractUsername(token));
+//        log.info("app conf");
+//        log.info(jwtService.extractUsername(token));
+//        return user.get().getId();
+//    }
 
     @Bean
     public UserDetailsService userDetailsService() {
