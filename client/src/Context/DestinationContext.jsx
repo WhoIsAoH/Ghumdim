@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import all_destination from '../Components/Assets/alldestination';
 import Axios from 'axios'
 
 export const DestinationContext = createContext(null);
@@ -23,7 +22,7 @@ const DestinationContextProvider = (props) => {
     // Function to initialize favourite items based on all destinations
     function getDefaultFavourite() {
         let favourite = {};
-        all_destination.forEach(destination => {
+        alldestination.forEach(destination => {
             favourite[destination.id] = 0;
         });
         return favourite;

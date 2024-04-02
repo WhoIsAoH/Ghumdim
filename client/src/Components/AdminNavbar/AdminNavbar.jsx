@@ -6,6 +6,9 @@ import { DestinationContext } from '../../Context/DestinationContext';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Axios from 'axios'; // Import Axios for making HTTP requests
 import { jwtDecode } from "jwt-decode";
+import { SlLogout } from "react-icons/sl";
+import './AdminNavbar.css'
+
 
 const AdminNavbar = () => {
     const { userId } = useParams();
@@ -130,14 +133,14 @@ const AdminNavbar = () => {
 
             <div className="nav-login-fav">
                 {/* Display user's name instead of login icon */}
-                <div onClick={toggleDropdown}>
-                    <p>Hi, {decodedToken?.firstName}<i className="fa-solid fa-user"></i></p>
-                    {showDropdown && (
+                <div className='navlogout' onClick={toggleDropdown}>
+                    <p >Hi, {decodedToken?.firstName}</p>
+                    <button onClick={handleLogout}><SlLogout size={20} /></button>
+                    {/* {showDropdown && (
                         <div className="dropdown-content">
-                            {/* <Link to={`/userprofile/${userId}`}>Profile</Link> */}
                             <button onClick={handleLogout}>Logout</button>
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <Link to='/favourites'>
                     <i className="fa-solid fa-star">

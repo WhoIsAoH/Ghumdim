@@ -8,12 +8,6 @@
     padding: 20px;
 }
 
-/* .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 1.5rem;
-} */
 
 .footer-logo p {
     color: rgb(110, 110, 110);
@@ -44,8 +38,6 @@
 
 .footer-social-icon i {
     font-size: 28px;
-    /* color: rgb(235, 178, 72); */
-
 }
 
 
@@ -72,5 +64,18 @@
 @media only screen and (max-width: 768px) {
     .footer-logo p {
         font-size: 24px;
+    }
+
+    .footer-social-icon i {
+        font-size: 20px;
+    }
+
+    .footer-copyright p {
+
+        font-size: 10px;
+    }
+
+    .footer-links li {
+        font-size: 12px;
     }
 }
