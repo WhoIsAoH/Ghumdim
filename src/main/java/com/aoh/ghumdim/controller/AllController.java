@@ -73,8 +73,9 @@ public class AllController {
     public List<DestinationResponseDto> getAllDestination(){
         return destinationService.getDestinationDetail();
     }
-  @GetMapping("/viewAllDestination/sort/{field}")
-  public List<DestinationResponseDto> getAllDestinationWithRating(@PathVariable String field){
+  @GetMapping("/viewAllDestination/sort/rating")
+  public List<DestinationResponseDto> getAllDestinationWithRating(String field){
+      field="rating";
     return destinationService.getDestinationDetailWithSortRating(field);
   }
 
