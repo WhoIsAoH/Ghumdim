@@ -5,10 +5,10 @@ import NewDestination from '../Components/NewDestination/NewDestination'
 import { useParams } from 'react-router-dom'
 
 const Home = () => {
-  const { userId } = useParams();
+  // const { userId } = useParams();
   return (
     <div>
-      <Hero userId={userId} />
+      <Hero />
       <Popular />
       <NewDestination />
     </div>

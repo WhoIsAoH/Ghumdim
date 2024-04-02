@@ -67,6 +67,7 @@ const Navbar = () => {
         <li onClick={() => { setMenu("religious") }}> <Link style={{ textDecoration: 'none' }} to='/religious'>Religious Place</Link>{menu === "religious" ? <hr /> : <></>} </li>
         <li onClick={() => { setMenu("parks") }}> <Link style={{ textDecoration: 'none' }} to='/parks'>Parks</Link>{menu === "parks" ? <hr /> : <></>} </li>
         <li onClick={() => { setMenu("hike") }}> <Link style={{ textDecoration: 'none' }} to='/hike'>Hike</Link>{menu === "hike" ? <hr /> : <></>} </li>
+        <li onClick={() => { setMenu("food") }}> <Link style={{ textDecoration: 'none' }} to='/food'>Food</Link>{menu === "food" ? <hr /> : <></>} </li>
       </ul>
 
       <div className='search-bar'>

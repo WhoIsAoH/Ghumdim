@@ -15,8 +15,8 @@ import NearPlacesAll from './Components/NearPlacesAll/NearPlacesAll';
 import ClientNavbar from './Components/ClientNavbar/ClientNavbar';
 import { useState, useEffect } from 'react';
 import SearchDestination from './Components/SearchDestinations/SearchDestination';
-// import { useJwt } from "react-jwt";
 import { jwtDecode } from "jwt-decode";
+import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
 
 function App() {
 
@@ -32,26 +32,33 @@ function App() {
         console.log(decoded, decodedToken);
       } catch (error) {
         console.error('Error decoding token:', error);
-        // Handle error if unable to decode token
+
       }
     } else {
       // Handle case where token is null or empty
     }
   }, []);
 
+
+
+
   return (
     <div>
 
       <BrowserRouter>
-        {decodedToken && decodedToken?.roles === 'CLIENT' ? <ClientNavbar /> : <Navbar />}
-        {/* <Navbar /> */}
+        {decodedToken && decodedToken.roles === 'CLIENT' ? <ClientNavbar /> : (decodedToken && decodedToken.roles === 'ADMIN' ? <AdminNavbar /> : <Navbar />)}
+        {/* {decodedToken && decodedToken?.roles === 'CLIENT' ? <ClientNavbar /> : <Navbar />} */}
+
+        {/* <AdminNavbar /> */}
 
         <Routes>
-          {/* <Route path='/' element={decodedToken && decodedToken.roles === 'ADMIN' ? <Admin /> : <Home />} /> */}
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={decodedToken && decodedToken.roles === 'ADMIN' ? <Admin /> : <Home />} />
+
+          {/* <Route path='/' element={<Home />} /> */}
           <Route path='/religious' element={<Category category="religious" />} />
           <Route path='/parks' element={<Category category="parks" />} />
           <Route path='/hike' element={<Category category="hike" />} />
+          <Route path='/food' element={<Category category="food" />} />
           <Route path='/add-destination' element={<AddDes />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />

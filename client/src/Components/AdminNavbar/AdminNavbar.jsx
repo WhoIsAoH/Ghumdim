@@ -1,16 +1,13 @@
 
 
 import React, { useContext, useState, useEffect } from 'react';
-import './ClientNavbar.css';
 import { Link, useNavigate, useParams } from 'react-router-dom'; // Importing useHistory and useParams
 import { DestinationContext } from '../../Context/DestinationContext';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Axios from 'axios'; // Import Axios for making HTTP requests
 import { jwtDecode } from "jwt-decode";
-import { SlLogout } from "react-icons/sl";
-import { ImProfile } from "react-icons/im";
 
-const ClientNavbar = () => {
+const AdminNavbar = () => {
     const { userId } = useParams();
     const navigate = useNavigate(); // Use history to redirect
     const [menu, setMenu] = useState("home");
@@ -137,10 +134,8 @@ const ClientNavbar = () => {
                     <p>Hi, {decodedToken?.firstName}<i className="fa-solid fa-user"></i></p>
                     {showDropdown && (
                         <div className="dropdown-content">
-                            {decodedToken && decodedToken.roles === 'CLIENT' && (
-                                <Link to={`/userprofile`}><ImProfile size={20} /> </Link>
-                            )}
-                            <button className='logout-btn ' onClick={handleLogout}><SlLogout size={20} /></button>
+                            {/* <Link to={`/userprofile/${userId}`}>Profile</Link> */}
+                            <button onClick={handleLogout}>Logout</button>
                         </div>
                     )}
                 </div>
@@ -159,6 +154,7 @@ const ClientNavbar = () => {
             {/* <div className="search-results">
                 {searchResults.map((result) => (
                     <div key={result.id}>
+                        
                         <p>{result.name}</p>
                     </div>
                 ))}
@@ -167,4 +163,4 @@ const ClientNavbar = () => {
     );
 };
 
-export default ClientNavbar;
+export default AdminNavbar;
