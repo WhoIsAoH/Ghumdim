@@ -36,7 +36,8 @@ const DescriptionBox = () => {
         const reviewData = {
             reviewDetail: newReview,
             rating: rating, // Include the rating in the review data
-            user: { userId: decodedToken?.userId },
+            // user: { userId: decodedToken?.userId },
+            user: '1',
             destination: destinationId
         };
 
@@ -79,7 +80,7 @@ const DescriptionBox = () => {
             </div>
             <div className="descriptionbox-description">
                 {reviews.map((review) => (
-                    <div key={review.id}>
+                    <div key={review.name}>
                         <p>Reviewer Name: {review?.userName}</p>
                         <p>Comment: {review?.reviewDetail}</p>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css'
-// import footer_logo from '../Assets/logo.png'
-// import instagram_icon from '../Assets/instagram_icon.png'
+import { Link } from 'react-router-dom'
+
 
 const Footer = () => {
   return (
@@ -11,7 +11,9 @@ const Footer = () => {
         <p><span style={{ color: 'rgb(235, 178, 72)' }}>G</span>humdim</p>
       </div>
       <ul className="footer-links">
+
         {/* <li>Destinations</li> */}
+        {/* <li><Link style={{ textDecoration: 'none' }} to='/aboutus'>About Us</Link></li> */}
         <li>About Us</li>
         <li>Contact Us</li>
       </ul>

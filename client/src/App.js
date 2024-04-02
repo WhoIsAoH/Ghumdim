@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 import SearchDestination from './Components/SearchDestinations/SearchDestination';
 import { jwtDecode } from "jwt-decode";
 import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
+import AboutUsPage from './Components/AboutUsPage/AboutUsPage';
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
           <Route path='/login' element={<LoginSignup />} />
           <Route path='nearbyplaces' element={<NearPlacesAll />} />
           <Route path={`/search/:query`} element={<SearchDestination />} />
+          <Route path='/aboutus' element={<AboutUsPage />} />
 
         </Routes>
 
