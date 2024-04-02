@@ -58,16 +58,16 @@ const AddDestinationForm = () => {
         e.preventDefault();
 
         try {
-            
+            debugger
             const formData = new FormData();
-           
-            Object.keys(destinationdata).forEach(item=> {
-                formData.append(item, destinationdata[item])
-            })
 
-            // formData.append('placeRequestDto', JSON.stringify(destinationdata));
+            // // Object.keys(destinationdata).forEach(item => {
+            //     formData.append(item, destinationdata[item])
+            // })
+
+            formData.append('placeRequestDto', new Blob([JSON.stringify(destinationdata)], { type: 'application/json' }));
             formData.append('multipartFile', multiFile);
-            
+
 
 
             // console.log("this is test", formData);
@@ -82,7 +82,7 @@ const AddDestinationForm = () => {
                 }
             }
 
-            const response = await fetch('http://127.0.0.1:8080/ghumdim/createDestination' ,{
+            const response = await fetch('http://127.0.0.1:8080/ghumdim/createDestination', {
                 method: "POST",
                 body: formData,
                 // headers: {
@@ -176,7 +176,7 @@ const AddDestinationForm = () => {
                     onChange={(e) => setMultiFile(e.target.files[0])} // Store selected file
                     required
                 />
-                {multiFile && <img src ={URL.createObjectURL(multiFile)}  ></img>}
+                {multiFile && <img src={URL.createObjectURL(multiFile)}  ></img>}
 
                 <label htmlFor="rating">Ratings:</label>
                 <select id="rating" name='rating' value={destinationdata.rating} onChange={handleChange}>
