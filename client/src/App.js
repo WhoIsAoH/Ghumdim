@@ -18,6 +18,7 @@ import SearchDestination from './Components/SearchDestinations/SearchDestination
 import { jwtDecode } from "jwt-decode";
 import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
 import AboutUsPage from './Components/AboutUsPage/AboutUsPage';
+import RatedPlacesAll from './Components/RatedPlacesAll/RatedPlacesaAll';
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/login' element={<LoginSignup />} />
           <Route path='nearbyplaces' element={<NearPlacesAll />} />
+          <Route path='ratedplaces' element={<RatedPlacesAll />} />
           <Route path={`/search/:query`} element={<SearchDestination />} />
           <Route path='/aboutus' element={<AboutUsPage />} />
 

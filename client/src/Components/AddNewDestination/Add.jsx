@@ -6,7 +6,7 @@ const AddDestinationForm = () => {
     const [destinationdata, setDestinationData] = useState({
         name: '',
         address: '',
-        category: '',
+        category: 'RELIGIOUS',
         latitude: '',
         status: 'PENDING', // Set status as PENDING by default
         contactNumber: '',
@@ -58,7 +58,7 @@ const AddDestinationForm = () => {
         e.preventDefault();
 
         try {
-            debugger
+
             const formData = new FormData();
 
             // // Object.keys(destinationdata).forEach(item => {
@@ -104,6 +104,7 @@ const AddDestinationForm = () => {
                 longitude: '',
                 // multiFile: null,
             })
+            window.location.href = '/add-destination';
         } catch (error) {
             console.error(error);
         }

@@ -19,9 +19,8 @@ const NearPlacesAll = () => {
             }
         };
 
-        // Call the function to fetch nearby places when the component mounts
         fetchNearbyPlaces();
-    }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+    }, []);
 
     return (
         <div className='popular'>
