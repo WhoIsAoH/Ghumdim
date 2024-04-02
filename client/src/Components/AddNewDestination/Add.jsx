@@ -8,18 +8,17 @@ const AddDestinationForm = () => {
         address: '',
         category: 'RELIGIOUS',
         latitude: '',
-        status: 'PENDING', // Set status as PENDING by default
+        status: 'PENDING',
         contactNumber: '',
         rating: 1,
         description: '',
         author: 1,
         longitude: ''
-        // multiFile: null,
     });
 
     const [multiFile, setMultiFile] = useState(null); // State to store file
 
-    const [isCurrentLocation, setIsCurrentLocation] = useState(false); // New state for checkbox
+    const [isCurrentLocation, setIsCurrentLocation] = useState(false); //state for checkbox
 
     useEffect(() => {
         if (isCurrentLocation && "geolocation" in navigator) {
@@ -61,16 +60,9 @@ const AddDestinationForm = () => {
 
             const formData = new FormData();
 
-            // // Object.keys(destinationdata).forEach(item => {
-            //     formData.append(item, destinationdata[item])
-            // })
-
             formData.append('placeRequestDto', new Blob([JSON.stringify(destinationdata)], { type: 'application/json' }));
             formData.append('multipartFile', multiFile);
 
-
-
-            // console.log("this is test", formData);
             for (var pair of formData.entries()) {
                 if (pair[1] instanceof File) {
                     console.log(pair[0] + ' is a File.');
@@ -85,9 +77,7 @@ const AddDestinationForm = () => {
             const response = await fetch('http://127.0.0.1:8080/ghumdim/createDestination', {
                 method: "POST",
                 body: formData,
-                // headers: {
-                //     'Content-Type': 'multipart/form-data',
-                // }
+
             });
 
             console.log(response.data);
@@ -102,15 +92,13 @@ const AddDestinationForm = () => {
                 description: '',
                 author: 1,
                 longitude: '',
-                // multiFile: null,
+
             })
             window.location.href = '/add-destination';
         } catch (error) {
             console.error(error);
         }
 
-        // Reset the form after submission
-        // ...
     };
 
 
@@ -173,7 +161,6 @@ const AddDestinationForm = () => {
                     type="file"
                     id="image"
                     name='multiFile'
-                    // value={destinationdata.multiFile}
                     onChange={(e) => setMultiFile(e.target.files[0])} // Store selected file
                     required
                 />

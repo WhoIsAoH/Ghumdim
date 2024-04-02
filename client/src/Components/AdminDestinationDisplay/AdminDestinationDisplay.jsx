@@ -1,20 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import star_icon from '../Assets/star_icon.png'
-import star_dull_icon from "../Assets/star_dull_icon.png"
 import { DestinationContext } from '../../Context/DestinationContext'
 import Axios, { all } from 'axios'
 import './AdminDestinationDisplay.css'
 import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa";
-
 import AdminEditForm from '../EditForm/AdminEditForm'
 
 const AdminDestinationDisplay = (props) => {
     const { destinationId } = useParams();
     const [rating, setRating] = useState(0); // State to store the rating
-
-
-    // console.log(destinationId);
 
     const [alldestination, setAllDestination] = useState({});
 
@@ -39,10 +33,9 @@ const AdminDestinationDisplay = (props) => {
         }
     }, []);
 
-    // Function to render star icons based on rating
     const renderStars = () => {
         const stars = [];
-        const roundedRating = Math.round(rating * 2) / 2; // Round the rating to the nearest half
+        const roundedRating = Math.round(rating * 2) / 2;
         for (let i = 0; i < 5; i++) {
             if (i < roundedRating - 0.5) {
                 stars.push(<FaStar style={{ color: '#FF4141' }} size={20} key={i} />);
@@ -55,7 +48,6 @@ const AdminDestinationDisplay = (props) => {
         return stars;
     };
 
-    // const { destination } = props;
     const { addToFavourite } = useContext(DestinationContext);
 
     return (
@@ -79,7 +71,6 @@ const AdminDestinationDisplay = (props) => {
                 </div>
                 <div className='destinationdisplay-right-location'>
                     <p>Location: {alldestination?.latitude},{alldestination?.longitude}</p>
-                    {/* <p>{alldestination?.author}</p> */}
                 </div>
 
                 <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button>

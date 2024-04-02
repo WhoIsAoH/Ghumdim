@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'; // Importing useHistory and useParams
 import { DestinationContext } from '../../Context/DestinationContext';
@@ -8,7 +6,6 @@ import Axios from 'axios'; // Import Axios for making HTTP requests
 import { jwtDecode } from "jwt-decode";
 import { SlLogout } from "react-icons/sl";
 import './AdminNavbar.css'
-
 
 const AdminNavbar = () => {
     const { userId } = useParams();
@@ -35,7 +32,6 @@ const AdminNavbar = () => {
             }
         };
 
-        // Fetch search results only if there's a search query
         if (searchQuery.trim() !== "") {
             fetchSearchResults();
         } else {
@@ -44,7 +40,6 @@ const AdminNavbar = () => {
     }, [searchQuery]);
 
     useEffect(() => {
-        // Fetch user's name
         Axios.get(`http://localhost:8080/ghumdim/user/${userId}`)
             .then((response) => {
                 setUserName(response.data.firstName); // Assuming the API response contains the user's first name
@@ -52,7 +47,7 @@ const AdminNavbar = () => {
             .catch((error) => {
                 console.error('Error fetching user data:', error);
             });
-    }, [userId]); // Include userId in the dependency array
+    }, [userId]);
 
     const [decodedToken, setDecodedToken] = useState(null);
 
@@ -67,10 +62,10 @@ const AdminNavbar = () => {
                 console.log(decoded, decodedToken);
             } catch (error) {
                 console.error('Error decoding token:', error);
-                // Handle error if unable to decode token
+
             }
         } else {
-            // Handle case where token is null or empty
+
         }
     }, []);
 
@@ -84,10 +79,9 @@ const AdminNavbar = () => {
             clearTimeout(typingTimeout);
         }
 
-        // Set a new timer to delay API request
         setTypingTimeout(setTimeout(() => {
             setSearchQuery(searchText);
-        }, 500)); // Adjust the delay as needed
+        }, 500));
     };
 
     // Toggle responsive menu
@@ -102,10 +96,10 @@ const AdminNavbar = () => {
 
     // Logout function
     const handleLogout = () => {
-        // Clear cookies by setting their expiry date to a past date
+        // Clear cookies 
         localStorage.clear();
 
-        // Redirect to home page using history
+        // Redirect 
         navigate('/');
         window.location.reload();
 
@@ -132,15 +126,11 @@ const AdminNavbar = () => {
             </div>
 
             <div className="nav-login-fav">
-                {/* Display user's name instead of login icon */}
+
                 <div className='navlogout' onClick={toggleDropdown}>
                     <p >Hi, {decodedToken?.firstName}</p>
                     <button onClick={handleLogout}><SlLogout size={20} /></button>
-                    {/* {showDropdown && (
-                        <div className="dropdown-content">
-                            <button onClick={handleLogout}>Logout</button>
-                        </div>
-                    )} */}
+
                 </div>
                 <Link to='/favourites'>
                     <i className="fa-solid fa-star">

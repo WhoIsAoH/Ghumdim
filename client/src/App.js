@@ -37,7 +37,7 @@ function App() {
 
       }
     } else {
-      // Handle case where token is null or empty
+
     }
   }, []);
 
@@ -49,9 +49,7 @@ function App() {
 
       <BrowserRouter>
         {decodedToken && decodedToken.roles === 'CLIENT' ? <ClientNavbar /> : (decodedToken && decodedToken.roles === 'ADMIN' ? <AdminNavbar /> : <Navbar />)}
-        {/* {decodedToken && decodedToken?.roles === 'CLIENT' ? <ClientNavbar /> : <Navbar />} */}
 
-        {/* <AdminNavbar /> */}
 
         <Routes>
           <Route path='/' element={decodedToken && decodedToken.roles === 'ADMIN' ? <Admin /> : <Home />} />
@@ -65,7 +63,6 @@ function App() {
           <Route path='/admin' element={<Admin />} />
           <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />
           <Route path='/userprofile/:userId' element={<UserProfile />} />
-          {/* <Route path='/clientnavbar/:userId' element={<ClientNavbar />} /> */}
 
           <Route path="/destination" element={<Destination />}>
             <Route path=':destinationId' element={<Destination />} />

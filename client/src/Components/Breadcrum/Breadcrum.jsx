@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './Breadcrum.css'
-// import { DestinationContext } from '../Context/DestinationContext'
 import arrow_icon from '../Assets/breadcrum_arrow.png'
 import Axios from 'axios';
 const Breadcrum = (props) => {
