@@ -33,17 +33,16 @@ public class TestCosine {
     log.info(queryVector.toString());
 
     for (Destinations destination : destinations) {
-      if(destination.getStatus().equals("REJECTED")){
-        return null;
-      }
+      if(!destination.getStatus().equals("REJECTED")) {
 //      List<Double> destinationVector = textToVectorConverter.documentToVector(destination.getAddress().split(" "));
-      textToVectorConverter.addDocument(destination.getAddress().split(" "));
-      List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName()+" "+destination.getDescription()).split(" "));
+        textToVectorConverter.addDocument(destination.getAddress().split(" "));
+        List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName() + " " + destination.getDescription()).split(" "));
 
-      double similarity = cosineSimilarityService.cosineSimilarity(queryVector, destinationVector);
-      log.info(("===========================testing similarity==============="));
-      log.info(String.valueOf(similarity));
-      destinationWithSimilarities.add(new DestinationWithSimilarity(destination, similarity));
+        double similarity = cosineSimilarityService.cosineSimilarity(queryVector, destinationVector);
+        log.info(("===========================testing similarity==============="));
+        log.info(String.valueOf(similarity));
+        destinationWithSimilarities.add(new DestinationWithSimilarity(destination, similarity));
+      }
     }
 
     // Sort destinations by cosine similarity in descending order
