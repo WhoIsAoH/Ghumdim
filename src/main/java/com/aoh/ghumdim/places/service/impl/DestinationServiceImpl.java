@@ -49,7 +49,7 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
-    public List<DestinationResponseDto> getDestinationDetailWithSortSevirity(@PathVariable String field) {
+    public List<DestinationResponseDto> getDestinationDetailWithSortRating(String field) {
         List<Destinations> places = destinationRepository.findAll(Sort.by(Sort.Direction.ASC, field));
         return modelMapperService.entityToListDto(places);
     }

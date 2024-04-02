@@ -18,7 +18,7 @@ public interface DestinationService {
     DestinationResponseDto getDestinationById(Integer id);
 
     UserResponse updateDestination(Integer id, DestinationRequestDto placeRequestDto);
-    List<DestinationResponseDto> getDestinationDetailWithSortSevirity(@PathVariable String field);
+    List<DestinationResponseDto> getDestinationDetailWithSortRating(String field);
     List<DestinationResponseDto> getDestinationsSortedByDistance(double userLatitude, double userLongitude);
 //    List<Destinations> sortDestinationsByDistance(List<Destinations> allDestinations, double userLatitude, double userLongitude);
 //    String upload(MultipartFile multipartFile);

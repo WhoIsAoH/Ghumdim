@@ -73,6 +73,11 @@ public class AllController {
     public List<DestinationResponseDto> getAllDestination(){
         return destinationService.getDestinationDetail();
     }
+  @GetMapping("/viewAllDestination/sort/{field}")
+  public List<DestinationResponseDto> getAllDestinationWithRating(@PathVariable String field){
+    return destinationService.getDestinationDetailWithSortRating(field);
+  }
+
 
     @PostMapping(value = {"/createDestination"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public UserResponse createDestination(@RequestPart DestinationRequestDto placeRequestDto, @RequestPart MultipartFile[] multipartFile){
