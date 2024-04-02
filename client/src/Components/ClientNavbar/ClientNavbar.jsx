@@ -155,14 +155,7 @@ const ClientNavbar = () => {
                 <i className={resmenu ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
             </div>
 
-            {/* Display search results */}
-            {/* <div className="search-results">
-                {searchResults.map((result) => (
-                    <div key={result.id}>
-                        <p>{result.name}</p>
-                    </div>
-                ))}
-            </div> */}
+
         </div>
     );
 };
