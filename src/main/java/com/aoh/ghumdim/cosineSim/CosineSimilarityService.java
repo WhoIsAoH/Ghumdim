@@ -6,16 +6,12 @@ import java.util.List;
 
 @Component
 public class CosineSimilarityService {
-
   public double cosineSimilarity(List<Double> vectorA, List<Double> vectorB) {
     double dotProduct = dotProduct(vectorA, vectorB);
-
     // magnitude A
     double magnitudeA = magnitude(vectorA);
-
     //magnitude B
     double magnitudeB = magnitude(vectorB);
-
     // cosine similarity
     if (magnitudeA != 0 && magnitudeB != 0) {
       return dotProduct / (magnitudeA * magnitudeB);
@@ -23,7 +19,6 @@ public class CosineSimilarityService {
       return 0.0;
     }
   }
-
   // dueta ko dot product ko value
   private double dotProduct(List<Double> vectorA, List<Double> vectorB) {
     double result = 0.0;

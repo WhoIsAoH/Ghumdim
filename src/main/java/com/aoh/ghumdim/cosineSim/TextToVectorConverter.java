@@ -8,24 +8,20 @@ import java.util.List;
 import java.util.Map;
 @Component
 public class TextToVectorConverter {
-
   private Map<String, Integer> vocabulary;
   private int totalDocuments;
-
   public TextToVectorConverter() {
     this.vocabulary = new HashMap<>();
     this.totalDocuments = 0;
   }
-
-  // Add a document to the vocabulary
+  // add
   public void addDocument(String[] document) {
     for (String word : document) {
       vocabulary.put(word, vocabulary.getOrDefault(word, 0) + 1);
     }
     totalDocuments++;
   }
-
-  // Convert a document to its TF-IDF vector representation
+  //TF-IDF nikaleko
   public List<Double> documentToVector(String[] document) {
     List<Double> vector = new ArrayList<>();
     for (String term : vocabulary.keySet()) {
@@ -36,7 +32,7 @@ public class TextToVectorConverter {
     return vector;
   }
 
-  // Calculate term frequency of a term in a document
+  //TF calculation
   private double termFrequency(String term, String[] document) {
     double frequency = 0;
     for (String word : document) {
@@ -47,7 +43,7 @@ public class TextToVectorConverter {
     return frequency / document.length;
   }
 
-  // Calculate inverse document frequency of a term in the corpus
+  // calculate with data available -> aaile chhai document ko description ra name
   private double inverseDocumentFrequency(String term) {
     if (vocabulary.containsKey(term)) {
       int documentFrequency = vocabulary.get(term);

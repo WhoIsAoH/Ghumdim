@@ -34,18 +34,16 @@ public class TestCosine {
 
     for (Destinations destination : destinations) {
       if(!destination.getStatus().equals("REJECTED")) {
-//      List<Double> destinationVector = textToVectorConverter.documentToVector(destination.getAddress().split(" "));
         textToVectorConverter.addDocument(destination.getAddress().split(" "));
         List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName() + " " + destination.getDescription()).split(" "));
-
         double similarity = cosineSimilarityService.cosineSimilarity(queryVector, destinationVector);
         log.info(("===========================testing similarity==============="));
         log.info(String.valueOf(similarity));
-        destinationWithSimilarities.add(new DestinationWithSimilarity(destination, similarity));
+        if(similarity >0) {
+          destinationWithSimilarities.add(new DestinationWithSimilarity(destination, similarity));
+        }
       }
     }
-
-    // Sort destinations by cosine similarity in descending order
     destinationWithSimilarities.sort((d1, d2) -> Double.compare(d2.getSimilarity(), d1.getSimilarity()));
 
     List<Destinations> dest = new ArrayList<>();
