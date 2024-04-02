@@ -74,9 +74,8 @@ public class AllController {
         return destinationService.getDestinationDetail();
     }
   @GetMapping("/viewAllDestination/sort/rating")
-  public List<DestinationResponseDto> getAllDestinationWithRating(String field){
-      field="rating";
-    return destinationService.getDestinationDetailWithSortRating(field);
+  public List<DestinationResponseDto> getAllDestinationWithRating(){
+    return destinationService.getDestinationDetailWithSortRating("rating");
   }
 
 
