@@ -1,51 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import Axios from 'axios';
-// import Item from '../Items/Item';
-// import { useParams } from 'react-router-dom';
-
-
-// const SearchDestination = (props) => {
-//     const { query } = useParams();
-//     const [searchQuery, setSearchQuery] = useState("");
-//     const [searchResults, setSearchResults] = useState([]);
-
-//     useEffect(() => {
-//         const fetchSearchResults = async () => {
-//             try {
-//                 const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestination/cosearch/${query}`);
-//                 setSearchResults(response.data);
-//             } catch (error) {
-//                 console.error('Error fetching search results:', error);
-//             }
-//         };
-
-//         // if (searchQuery.trim() !== "") {
-//         //     fetchSearchResults();
-//         // } else {
-//         //     setSearchResults([]);
-//         // }
-//     }, [searchQuery]);
-
-//     return (
-//         <div className='destination-category'>
-//             <div className="destinationcategory-places">
-//                 {searchResults.map((item) => (
-//                     <Item
-//                         key={item.id}
-//                         id={item.id}
-//                         name={item.name}
-//                         photo={item.photo}
-//                         address={item.address}
-//                         status={item.status}
-//                     />
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default SearchDestination;
-
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import Item from '../Items/Item';
@@ -87,3 +39,50 @@ const SearchDestination = () => {
 }
 
 export default SearchDestination;
+
+
+// import React, { useEffect, useState } from 'react';
+// import Axios from 'axios';
+// import Item from '../Items/Item';
+// import { useParams } from 'react-router-dom';
+
+// const SearchDestination = () => {
+//     const { query } = useParams();
+//     const [searchResults, setSearchResults] = useState([]);
+
+//     useEffect(() => {
+//         const fetchSearchResults = async () => {
+//             try {
+//                 const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestination/cosearch/${query}`);
+//                 const filteredResults = response.data.filter(item =>
+//                     item.name.toLowerCase().includes(query.toLowerCase()) ||
+//                     item.address.toLowerCase().includes(query.toLowerCase())
+//                 );
+//                 setSearchResults(filteredResults);
+//             } catch (error) {
+//                 console.error('Error fetching search results:', error);
+//             }
+//         };
+
+//         fetchSearchResults();
+//     }, [query]);
+
+//     return (
+//         <div className='destination-category'>
+//             <div className="destinationcategory-places">
+//                 {searchResults.slice(0, 10).map((item) => (
+//                     <Item
+//                         key={item.id}
+//                         id={item.id}
+//                         name={item.name}
+//                         photo={item.photo}
+//                         address={item.address}
+//                         status={item.status}
+//                     />
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default SearchDestination;
