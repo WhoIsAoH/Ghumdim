@@ -24,7 +24,7 @@ public class CosineSimilarityService {
     }
   }
 
-  // Method to compute dot product of two vectors
+  // dueta ko dot product ko value
   private double dotProduct(List<Double> vectorA, List<Double> vectorB) {
     double result = 0.0;
     int n = Math.min(vectorA.size(), vectorB.size());
@@ -33,8 +33,7 @@ public class CosineSimilarityService {
     }
     return result;
   }
-
-  // Method to compute magnitude of a vector
+  //magnitude calculate garxa eslee
   private double magnitude(List<Double> vector) {
     double sum = 0.0;
     for (Double value : vector) {

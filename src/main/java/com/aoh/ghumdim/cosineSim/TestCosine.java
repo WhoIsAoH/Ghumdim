@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +33,9 @@ public class TestCosine {
     log.info(queryVector.toString());
 
     for (Destinations destination : destinations) {
+      if(destination.getStatus().equals("REJECTED")){
+        return null;
+      }
 //      List<Double> destinationVector = textToVectorConverter.documentToVector(destination.getAddress().split(" "));
       textToVectorConverter.addDocument(destination.getAddress().split(" "));
       List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName()+" "+destination.getDescription()).split(" "));
@@ -46,11 +50,10 @@ public class TestCosine {
     destinationWithSimilarities.sort((d1, d2) -> Double.compare(d2.getSimilarity(), d1.getSimilarity()));
 
     List<Destinations> dest = new ArrayList<>();
-
-
     // Extract sorted destinations
     dest = destinationWithSimilarities.stream()
             .map(DestinationWithSimilarity::getDestination)
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
     Collections.reverse(dest);
     return dest;
