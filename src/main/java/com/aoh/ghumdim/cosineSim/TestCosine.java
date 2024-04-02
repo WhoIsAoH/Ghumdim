@@ -34,7 +34,7 @@ public class TestCosine {
     for (Destinations destination : destinations) {
 //      List<Double> destinationVector = textToVectorConverter.documentToVector(destination.getAddress().split(" "));
       textToVectorConverter.addDocument(destination.getAddress().split(" "));
-      List<Double> destinationVector = textToVectorConverter.documentToVector(destination.getDescription().split(" "));
+      List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName()+" "+destination.getDescription()).split(" "));
 
       double similarity = cosineSimilarityService.cosineSimilarity(queryVector, destinationVector);
       log.info(("===========================testing similarity==============="));
