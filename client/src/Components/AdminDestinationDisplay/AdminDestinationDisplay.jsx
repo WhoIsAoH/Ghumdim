@@ -73,7 +73,7 @@ const AdminDestinationDisplay = (props) => {
                     <p>Location: {alldestination?.latitude},{alldestination?.longitude}</p>
                 </div>
 
-                <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button>
+                {/* <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button> */}
 
                 {/* Edit the destinations */}
                 <button className='btn-modal' onClick={togglemodal} >Edit</button>

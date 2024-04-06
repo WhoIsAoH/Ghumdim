@@ -10,8 +10,8 @@ const NearPlacesAll = () => {
         const fetchNearbyPlaces = async () => {
             try {
                 // Provide user's latitude and longitude coordinates here
-                const userLatitude = 0;
-                const userLongitude = 0;
+                const userLatitude = 27.668855;
+                const userLongitude = 85.421208;
                 const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestinationsSortedByDistance?userLatitude=${userLatitude}&userLongitude=${userLongitude}`);
                 setNearbyPlaces(response.data); // Update state with the fetched data
             } catch (error) {

@@ -1,55 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './UserProfile.css';
-import { useParams } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+
 
 const UserProfile = () => {
-    const { userId } = useParams();
+    const [decodedToken, setDecodedToken] = useState(null);
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchUserData = async () => {
+        const token = localStorage.getItem('jwt');
+
+        if (token) {
             try {
-                const response = await Axios.get(`http://localhost:8080/ghumdim/user/${userId}`);
-                setUserData(response.data);
-                setLoading(false); // Set loading to false once data is fetched
+                const decoded = jwtDecode(token);
+                setDecodedToken(decoded);
+                console.log(decoded, decodedToken);
             } catch (error) {
-                console.error('Error fetching user data:', error);
-                setError(error); // Set error state if request fails
-                setLoading(false); // Set loading to false even if there's an error
+                console.error('Error decoding token:', error);
             }
-        };
+        }
+    }, []); // Only run once when component mounts
 
-        fetchUserData();
-    }, [userId]);
+    useEffect(() => {
+        if (decodedToken) { // Check if decodedToken is not null
+            const fetchUserData = async () => {
+                try {
+                    const response = await Axios.get(`http://localhost:8080/ghumdim/user/${decodedToken.userId}`);
+                    setUserData(response.data);
+                    setLoading(false); // Set loading to false once data is fetched
+                } catch (error) {
+                    console.error('Error fetching user data:', error);
+                    setError(error); // Set error state if request fails
+                    setLoading(false); // Set loading to false even if there's an error
+                }
+            };
 
-    // Show loading message while data is being fetched
+            fetchUserData();
+        }
+    }, [decodedToken]); // Run whenever decodedToken changes
+
     if (loading) {
         return <div>Loading...</div>;
     }
 
-    // Show error message if there's an error fetching data
     if (error) {
         return <div>Error: {error.message}</div>;
     }
 
-    // Show user profile if data is successfully fetched
     return (
         <div className="user-profile">
             <h2>User Profile</h2>
             {userData && (
                 <div className='userprofile-container'>
+                    {/* <div>
+                        <strong>User:</strong> {decodedToken.userId}
+                    </div> */}
                     <div>
-                        <p>User ID: {userId}</p>
+                        <strong>Name:</strong> {userData.firstname}
                     </div>
-                    <div>
-                        <strong>First Name:</strong> {userData.firstName}
-                    </div>
-                    <div>
-                        <strong>Last Name:</strong> {userData.lastName}
-                    </div>
+                    {/* <div>
+                        <strong>Last Name:</strong> {userData.lastname}
+                    </div> */}
                     <div>
                         <strong>Email:</strong> {userData.email}
                     </div>

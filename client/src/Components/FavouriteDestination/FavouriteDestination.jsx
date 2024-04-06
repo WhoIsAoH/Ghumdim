@@ -4,7 +4,6 @@ import { DestinationContext } from '../../Context/DestinationContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
 import Axios from 'axios';
 
-
 const FavouriteDestination = () => {
 
     const [alldestination, setAllDestination] = useState([]);
@@ -46,7 +45,6 @@ const FavouriteDestination = () => {
             })}
         </div>
     )
-
 
 }
 

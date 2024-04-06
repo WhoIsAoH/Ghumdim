@@ -50,11 +50,8 @@ function App() {
       <BrowserRouter>
         {decodedToken && decodedToken.roles === 'CLIENT' ? <ClientNavbar /> : (decodedToken && decodedToken.roles === 'ADMIN' ? <AdminNavbar /> : <Navbar />)}
 
-
         <Routes>
           <Route path='/' element={decodedToken && decodedToken.roles === 'ADMIN' ? <Admin /> : <Home />} />
-
-          {/* <Route path='/' element={<Home />} /> */}
           <Route path='/religious' element={<Category category="religious" />} />
           <Route path='/parks' element={<Category category="parks" />} />
           <Route path='/hike' element={<Category category="hike" />} />
@@ -62,7 +59,7 @@ function App() {
           <Route path='/add-destination' element={<AddDes />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admindestinationdisplay/:destinationId' element={<AdminDestinationDisplay />} />
-          <Route path='/userprofile/:userId' element={<UserProfile />} />
+          <Route path='/userprofile' element={<UserProfile />} />
 
           <Route path="/destination" element={<Destination />}>
             <Route path=':destinationId' element={<Destination />} />
@@ -78,7 +75,6 @@ function App() {
         </Routes>
 
       </BrowserRouter>
-
       <Footer />
 
     </div>

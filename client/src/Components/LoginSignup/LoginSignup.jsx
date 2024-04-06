@@ -156,13 +156,13 @@ const LoginSignup = () => {
                         </div>
                     </div>
 
-                    {action === 'Sign Up' ? (
+                    {/* {action === 'Sign Up' ? (
                         <div></div>
                     ) : (
                         <div className='forgot-password'>
                             Forgot Password? <span>Click Here!</span>
                         </div>
-                    )}
+                    )} */}
 
                     {errorMessage && <div className='error-message'>{errorMessage}</div>}
 

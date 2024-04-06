@@ -1,4 +1,3 @@
-
 import React, { useContext, useState, useEffect } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
@@ -9,8 +8,8 @@ import Axios from 'axios'; // Import Axios for making HTTP requests
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [resmenu, setResMenu] = useState(false);
-  const [totalFavDestinations, setTotalFavDestinations] = useState(0);
-  const { getTotalFavDestinations } = useContext(DestinationContext);
+  // const [totalFavDestinations, setTotalFavDestinations] = useState(0);
+  // const { getTotalFavDestinations } = useContext(DestinationContext);
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -78,25 +77,17 @@ const Navbar = () => {
 
       <div className="nav-login-fav">
         <Link to='/login'><i className="fa-solid fa-user"></i></Link>
-        <Link to='/favourites'>
+        {/* <Link to='/favourites'>
           <i className="fa-solid fa-star">
             <span className='red'><sup>{getTotalFavDestinations()}</sup></span>
           </i>
-        </Link>
+        </Link> */}
       </div>
 
       <div className="mobile" onClick={handleMenuToggle}>
         <i className={resmenu ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
       </div>
 
-      {/* Display search results */}
-      {/* <div className="search-results">
-        {searchResults.map((result) => (
-          <div key={result.id}>
-            <p>{result.name}</p>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

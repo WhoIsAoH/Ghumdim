@@ -123,13 +123,11 @@ const ClientNavbar = () => {
                 <li onClick={() => { setMenu("parks") }}> <Link style={{ textDecoration: 'none' }} to='/parks'>Parks</Link>{menu === "parks" ? <hr /> : <></>} </li>
                 <li onClick={() => { setMenu("hike") }}> <Link style={{ textDecoration: 'none' }} to='/hike'>Hike</Link>{menu === "hike" ? <hr /> : <></>} </li>
                 <li onClick={() => { setMenu("food") }}> <Link style={{ textDecoration: 'none' }} to='/food'>Food</Link>{menu === "food" ? <hr /> : <></>} </li>
-
             </ul>
 
             <div className='search-bar'>
                 <input type="search" placeholder='Search' value={searchQuery} onChange={handleSearchChange} />
-                <button><AiOutlineSearch style={{ width: '25px', height: '27px' }} /></button>
-            </div>
+                <Link to={`/search/${searchQuery}`}><button><AiOutlineSearch style={{ width: '25px', height: '27px' }} /></button></Link>            </div>
 
             <div className="nav-login-fav">
                 {/* Display user's name instead of login icon */}
@@ -144,11 +142,11 @@ const ClientNavbar = () => {
                         </div>
                     )}
                 </div>
-                <Link to='/favourites'>
+                {/* <Link to='/favourites'>
                     <i className="fa-solid fa-star">
                         <span className='red'><sup>{getTotalFavDestinations()}</sup></span>
                     </i>
-                </Link>
+                </Link> */}
             </div>
 
             <div className="mobile" onClick={handleMenuToggle}>

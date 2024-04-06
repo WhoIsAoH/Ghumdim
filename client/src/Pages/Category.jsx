@@ -18,16 +18,10 @@ const Category = (props) => {
       });
   }, []);
 
-  // const { all_destination } = useContext(DestinationContext);
   return (
     <div className='destination-category'>
       <div className='destiantioncategory-indexSort'>
-        <p>
-          <span>Showing 1-12</span> out of 36 destinations
-        </p>
-        <div className="destinationcategory-sort">
-          Sort by <img src={dropdown_icon} alt="" />
-        </div>
+
       </div>
       <div className="destinationcategory-places">
 

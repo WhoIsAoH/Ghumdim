@@ -37,7 +37,7 @@ const DescriptionBox = () => {
             reviewDetail: newReview,
             rating: rating, // Include the rating in the review data
             // user: { userId: decodedToken?.userId },
-            user: '1',
+            user: decodedToken.userId,
             destination: destinationId
         };
 
