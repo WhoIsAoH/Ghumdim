@@ -1,7 +1,5 @@
 package com.aoh.ghumdim.cosineSim.trash;
 
-import com.aoh.ghumdim.cosineSim.Tokenizer;
-
 import java.util.*;
 
 //@Component

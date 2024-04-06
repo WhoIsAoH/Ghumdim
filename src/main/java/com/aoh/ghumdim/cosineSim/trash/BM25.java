@@ -1,6 +1,5 @@
 package com.aoh.ghumdim.cosineSim.trash;
 
-import com.aoh.ghumdim.cosineSim.Tokenizer;
 import com.aoh.ghumdim.places.dto.DestinationResponseDto;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package com.aoh.ghumdim.cosineSim;
+package com.aoh.ghumdim.cosineSim.trash;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Component
 public class TextToVectorConverter {
-  private Map<String, Integer> vocabulary;
+  private final Map<String, Integer> vocabulary;
   private int totalDocuments;
+
   public TextToVectorConverter() {
     this.vocabulary = new HashMap<>();
     this.totalDocuments = 0;
   }
+
   // add
   public void addDocument(String[] document) {
     for (String word : document) {
@@ -21,6 +24,7 @@ public class TextToVectorConverter {
     }
     totalDocuments++;
   }
+
   //TF-IDF nikaleko
   public List<Double> documentToVector(String[] document) {
     List<Double> vector = new ArrayList<>();

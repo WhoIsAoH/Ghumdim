@@ -134,20 +134,6 @@ public class AllController {
   }
 
 
-//    @GetMapping("/bm25")
-//    public List<DestinationResponseDto> SearchBm25(@RequestParam String[] query, @RequestParam int n){
-////      ArrayList queryList = new ArrayList();
-////      queryList.add(query);
-//      return destinationService.bm25Search(query,destinationService.getDestinationDetail(), n );
-////      return null;
-//    }
-
-
-
-
-
-
-
 
     //review controller
     private final ReviewService reviewService;
