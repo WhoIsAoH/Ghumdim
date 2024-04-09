@@ -129,7 +129,7 @@ public class AllController {
 
     private final TestCosine testCosine;
   @GetMapping("/viewDestination/cosearch/{key}")
-  public List<Destinations> searchDestinationCosine(@PathVariable String key){
+  public List<DestinationResponseDto> searchDestinationCosine(@PathVariable String key){
     return testCosine.getDestinationsByCosineSimilarity(key);
   }
 
