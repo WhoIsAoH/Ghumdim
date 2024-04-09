@@ -27,5 +27,7 @@ public class DestinationResponseDto {
     private String photo;
     private double rating;
     private String description;
+    private Double cosineValue= 0.0;;
+    private Double distanceValue= 0.0;;
 
 }

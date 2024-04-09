@@ -116,7 +116,11 @@ public class DestinationServiceImpl implements DestinationService {
                 .sorted(Comparator.comparingDouble(destination ->
                          distanceCalculatorService.calculateDistance(destination.getLatitude(), destination.getLongitude(), userLatitude, userLongitude)))
                 .collect(Collectors.toList());
-        return modelMapperService.entityToListDto(sortedDestinations);
+        List<DestinationResponseDto> responseDto = modelMapperService.entityToListDto(sortedDestinations);
+        for(DestinationResponseDto dest: responseDto){
+            dest.setDistanceValue(distanceCalculatorService.calculateDistance(dest.getLatitude(), dest.getLongitude(), userLatitude, userLongitude));
+        }
+        return responseDto;
     }
 
     public UserResponse deleteDestination(Integer id){
