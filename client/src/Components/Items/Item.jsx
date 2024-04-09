@@ -3,7 +3,8 @@ import './Item.css'
 import { Link } from 'react-router-dom'
 
 const Item = (props) => {
-  // const [alldestination, setAllDestination] = useState([]);
+
+  const { showCosine, showDistance } = props;
 
   return (
     <div className='item'>
@@ -11,7 +12,8 @@ const Item = (props) => {
       <p>{props.name}</p>
       <p>{props.address}</p>
       <p>{props.status}</p>
-      <p>Haversine Distance: {props.distanceValue}</p>
+      {showDistance && <p>Haversine Distance: {props.distanceValue}</p>}
+      {showCosine && <p>Cosine Value: {props.cosineValue}</p>}
     </div >
 
 

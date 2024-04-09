@@ -51,7 +51,7 @@ const RelatedDestination = () => {
             <hr />
             <div className="relateddestination-item">
                 {nearbyPlaces.map((item, i) => {
-                    return <Item key={i} id={item.id} name={item.name} photo={item.photo} address={item.address} distanceValue={item.distanceValue.toFixed(3)} />
+                    return <Item key={i} id={item.id} name={item.name} photo={item.photo} address={item.address} showDistance={true} distanceValue={item.distanceValue.toFixed(3)} />
                 })}
             </div>
         </div>

@@ -31,6 +31,8 @@ const SearchDestination = () => {
                         photo={item.photo}
                         address={item.address}
                         status={item.status}
+                        showCosine={true}
+                        cosineValue={item.cosineValue.toFixed(4)}
                     />
                 ))}
             </div>
