@@ -11,6 +11,7 @@ const Item = (props) => {
       <p>{props.name}</p>
       <p>{props.address}</p>
       <p>{props.status}</p>
+      <p>Haversine Distance: {props.distanceValue}</p>
     </div >
 
 
