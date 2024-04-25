@@ -37,7 +37,7 @@ public class TestCosine {
     log.info(queryVector.toString());
 
     for (DestinationResponseDto destination : destinations) {
-      if(!destination.getStatus().equals("REJECTED")) {
+      if((!destination.getStatus().equals("REJECTED")) && (!destination.getStatus().equals("DUPLICATE"))) {
         textToVectorConverter.addDocument(destination.getAddress().split(" "));
         List<Double> destinationVector = textToVectorConverter.documentToVector((destination.getName() + " " + destination.getDescription()).split(" "));
         double similarity = cosineSimilarityService.cosineSimilarity(queryVector, destinationVector);
