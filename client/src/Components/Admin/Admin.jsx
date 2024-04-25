@@ -39,7 +39,7 @@ const Admin = (props) => {
                 <tbody>
                     {alldestination.map((destination, index) => (
                         <tr key={index}>
-                            <td><Link to={`/destination/${destination.id}`}><img className='destination-image' src={`https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/${destination.photo}?alt=media`} alt="" /></Link></td>
+                            <td><Link to={`/destination/${destination.id}`}><img className='destination-image' src={`https://firebasestorage.googleapis.com/v0/b/ghumdim-a934a.appspot.com/o/${destination.photo}?alt=media`} alt="" /></Link></td>
                             <td>{destination.name}</td>
                             <td>{destination.category}</td>
                             <td>{destination.address}</td>

@@ -32,7 +32,7 @@ const FavouriteDestination = () => {
                 if (favouriteItems[e.id] > 0) {
                     return <div>
                         <div className="favitems-format favtitems-format-main">
-                            <img src={`https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/${e.photo}?alt=media`} alt="" className='favicon-destination-icon' />
+                            <img src={`https://firebasestorage.googleapis.com/v0/b/ghumdim-a934a.appspot.com/o/${e.photo}?alt=media`} alt="" className='favicon-destination-icon' />
                             <p>{e.name}</p>
                             <p>{e.category}</p>
                             <p>{e.address}</p>

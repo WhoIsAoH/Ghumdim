@@ -56,7 +56,7 @@ const AdminDestinationDisplay = (props) => {
             <div className="destinationdisplay-left">
 
                 <div className="destinationdisplay-img">
-                    <img className='destinationdisplay-main-img' src={`https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/${alldestination?.photo}?alt=media`} alt="" />
+                    <img className='destinationdisplay-main-img' src={`https://firebasestorage.googleapis.com/v0/b/ghumdim-a934a.appspot.com/o/${alldestination?.photo}?alt=media`} alt="" />
                 </div>
             </div>
 

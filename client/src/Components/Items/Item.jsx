@@ -8,7 +8,7 @@ const Item = (props) => {
 
   return (
     <div className='item'>
-      <Link to={`/destination/${props.id}`}>{<img src={`https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/${props.photo}?alt=media`} alt="" />}</Link>
+      <Link to={`/destination/${props.id}`}>{<img src={`https://firebasestorage.googleapis.com/v0/b/ghumdim-a934a.appspot.com/o/${props.photo}?alt=media`} alt="" />}</Link>
       <p>{props.name}</p>
       <p>{props.address}</p>
       <p>{props.status}</p>
