@@ -48,13 +48,13 @@ public class ImageServiceimpl implements ImageService {
         return tempFile;
     }
     private String uploadFile(File file, String fileName) throws IOException{
-        BlobId blobId = BlobId.of("ghumdim.appspot.com",fileName);
+        BlobId blobId = BlobId.of("ghumdim-a934a.appspot.com",fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
         InputStream inputStream = DestinationServiceImpl.class.getClassLoader().getResourceAsStream("serviceAccountKey.json");
         Credentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
-        String DOWNLOAD_URL ="https://firebasestorage.googleapis.com/v0/b/ghumdim.appspot.com/o/%s?alt=media";
+        String DOWNLOAD_URL ="https://firebasestorage.googleapis.com/v0/b/ghumdim-a934a.appspot.com/o/%s?alt=media";
         return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName, StandardCharsets.UTF_8));
 
     }
