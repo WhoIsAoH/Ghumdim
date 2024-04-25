@@ -82,10 +82,30 @@ const LoginSignup = () => {
 
             <div className='container-right'>
                 <form onSubmit={handleFormSubmit}>
-                    <div className='header'>
+                    <div className='submit-container'>
+                        <button
+                            type='button'
+                            className={action === 'Login' ? 'submit gray' : 'submit'}
+                            onClick={() => {
+                                setAction('Sign Up');
+                                setErrorMessage('');
+                            }}>
+                            Sign Up
+                        </button>
+                        <button
+                            type='button'
+                            className={action === 'Sign Up' ? 'submit gray' : 'submit'}
+                            onClick={() => {
+                                setAction('Login');
+                                setErrorMessage('');
+                            }}>
+                            Login
+                        </button>
+                    </div>
+                    {/* <div className='header'>
                         <div className='signup'>{action}</div>
                         <div className='underline'></div>
-                    </div>
+                    </div> */}
 
                     <div className='inputs'>
                         {action === 'Login' ? (
@@ -150,26 +170,7 @@ const LoginSignup = () => {
 
                     {errorMessage && <div className='error-message'>{errorMessage}</div>}
 
-                    <div className='submit-container'>
-                        <button
-                            type='button'
-                            className={action === 'Login' ? 'submit gray' : 'submit'}
-                            onClick={() => {
-                                setAction('Sign Up');
-                                setErrorMessage('');
-                            }}>
-                            Sign Up
-                        </button>
-                        <button
-                            type='button'
-                            className={action === 'Sign Up' ? 'submit gray' : 'submit'}
-                            onClick={() => {
-                                setAction('Login');
-                                setErrorMessage('');
-                            }}>
-                            Login
-                        </button>
-                    </div>
+
                     <div className='submit-btn'>
                         <button type='submit' className='submit' disabled={loading}>
                             {loading ? 'Loading...' : 'Submit'}
