@@ -19,6 +19,7 @@ const AddDestinationForm = () => {
     const [multiFile, setMultiFile] = useState(null); // State to store file
 
     const [isCurrentLocation, setIsCurrentLocation] = useState(false); //state for checkbox
+    const [formErrors, setFormErrors] = useState({});
 
     useEffect(() => {
         if (isCurrentLocation && "geolocation" in navigator) {
@@ -45,7 +46,7 @@ const AddDestinationForm = () => {
         const newValue = type === 'file' ? files[0] : value;
 
         setDestinationData({ ...destinationdata, [name]: newValue });
-        console.log('formData', destinationdata);
+        validateForm(); // Call validateForm whenever input values change
     };
 
 
@@ -53,9 +54,26 @@ const AddDestinationForm = () => {
         setIsCurrentLocation(e.target.checked);
     };
 
+    const validateForm = () => {
+        let errors = {};
+        let isValid = true;
+
+        if (!destinationdata.name.trim()) {
+            errors.name = 'Name is required';
+            isValid = false;
+        }
+
+        // Add validation for other fields as needed
+
+        setFormErrors(errors);
+        return isValid;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        if (!validateForm()) {
+            return;
+        }
         try {
 
             const formData = new FormData();
@@ -117,6 +135,7 @@ const AddDestinationForm = () => {
                     onChange={handleChange}
                     required
                 />
+                {formErrors.name && <span className="error">{formErrors.name}</span>}
 
                 <label htmlFor="address">Address:</label>
                 <input
@@ -164,7 +183,7 @@ const AddDestinationForm = () => {
                     onChange={(e) => setMultiFile(e.target.files[0])} // Store selected file
                     required
                 />
-                {multiFile && <img src={URL.createObjectURL(multiFile)}  ></img>}
+                {multiFile && <img src={URL.createObjectURL(multiFile)} style={{ height: "200px", width: "200px", objectFit: "contain" }}  ></img>}
 
                 <label htmlFor="rating">Ratings:</label>
                 <select id="rating" name='rating' value={destinationdata.rating} onChange={handleChange}>
