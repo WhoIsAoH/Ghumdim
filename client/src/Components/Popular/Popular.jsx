@@ -59,6 +59,7 @@ const Popular = () => {
             photo={place.photo}
             address={place.address}
             status={place.status}
+            showDistance={true} distanceValue={place.distanceValue.toFixed(3)}
           />
         ))}
       </div>
