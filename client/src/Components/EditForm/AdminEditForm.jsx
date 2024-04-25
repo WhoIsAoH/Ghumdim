@@ -65,8 +65,9 @@ const AdminEditForm = () => {
                 author: 1,
                 longitude: ''
             });
+            window.alert('Edited Successfully!');
             // Reload the page
-            window.location.reload();
+            window.location.href = '/';
         } catch (error) {
             console.error(error);
         }

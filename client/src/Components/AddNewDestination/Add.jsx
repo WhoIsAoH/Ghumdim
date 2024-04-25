@@ -112,6 +112,8 @@ const AddDestinationForm = () => {
                 longitude: '',
 
             })
+            // Show alert
+            window.alert('Destination successfully added!');
             window.location.href = '/add-destination';
         } catch (error) {
             console.error(error);
@@ -193,7 +195,7 @@ const AddDestinationForm = () => {
                         </option>
                     ))}
                 </select>
-
+                ``
                 <label htmlFor="description">Description:</label>
                 <textarea
                     id="description"
