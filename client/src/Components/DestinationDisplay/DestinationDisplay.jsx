@@ -1,9 +1,9 @@
 
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './DestinationDisplay.css';
-import { DestinationContext } from '../../Context/DestinationContext';
+
 import Axios from 'axios';
 import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa";
 
@@ -25,7 +25,7 @@ const DestinationDisplay = () => {
         }
     }, [destinationId]);
 
-    const { addToFavourite } = useContext(DestinationContext);
+    // const { addToFavourite } = useContext(DestinationContext);
 
     // Function to render star icons based on rating
     const renderStars = () => {
@@ -64,9 +64,9 @@ const DestinationDisplay = () => {
                     <p>Latitude: {alldestination?.latitude}</p>
                     <p>Longitude: {alldestination?.longitude}</p>
                 </div>
-                <a href={`https://www.google.com/maps/place/${alldestination?.latitude},${alldestination?.longitude}`} target='_blank'>Goto</a>
+                <a href={`https://www.google.com/maps/place/${alldestination?.latitude},${alldestination?.longitude}`} target='_blank' rel="noreferrer">Goto</a>
 
-                <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button>
+                {/* <button onClick={() => { addToFavourite(alldestination?.destinationId) }}>Add to Favourites</button> */}
             </div>
         </div >
     );

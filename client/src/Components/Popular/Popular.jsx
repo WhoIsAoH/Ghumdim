@@ -31,8 +31,8 @@ const Popular = () => {
   useEffect(() => {
     const fetchNearbyPlaces = async () => {
       try {
-        const userLatitude = 27.6699789;
-        const userLongitude = 85.4206924;
+        const userLatitude = 27.6822283;
+        const userLongitude = 85.2853227;
         const response = await Axios.get(`http://localhost:8080/ghumdim/viewDestinationsSortedByDistance?userLatitude=${userLatitude}&userLongitude=${userLongitude}`);
         // Slice the response data to get only the first four items
         const firstFourPlaces = response.data.slice(0, 4);

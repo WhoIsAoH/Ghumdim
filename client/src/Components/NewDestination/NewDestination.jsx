@@ -21,7 +21,7 @@ const NewDestination = () => {
   }, []);
 
   // Slice the first 8 items from the ratingdestination array
-  const displayedItems = ratingdestination.slice(0, 8);
+  const displayedItems = ratingdestination.slice(0, 4);
 
   return (
     <div className='new-destination'>
